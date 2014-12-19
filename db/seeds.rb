@@ -5,7 +5,7 @@ module Seed
     User.create!(name: "testUser1", email: "testUser1@whatever.com", twitter: "@testUser1", password: "test1", is_admin: false)
     User.create!(name: "testUser2", email: "testUser2@whatever.com", twitter: "@testUser2", password: "test2", is_admin: false)
 
-    5.times do
+    10.times do
       title = Faker::Lorem.word
       description = Faker::Lorem.sentence(5)
       author_id = rand(1..3)
@@ -16,10 +16,11 @@ module Seed
       title = Faker::Lorem.word
       content = Faker::Lorem.sentence(10)
       blog_id = rand(1..5)
+      poster_id = rand(1..3)
       Post.create(title: title, content: content, blog_id: blog_id, poster_id: poster_id)
     end
 
-    5.times do
+    10.times do
       title = Faker::Lorem.word
       description = Faker::Lorem.sentence(5)
       creator_id = rand(1..3)

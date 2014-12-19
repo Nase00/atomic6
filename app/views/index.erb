@@ -1,3 +1,7 @@
 <div id="wrapper">
-  Wrapped
+  <ul>
+    <% latest_blogs.each do |blog| %>
+    <li><%= blog.title %></li>
+    <% end %>
+  </ul>
 </div>

@@ -8,6 +8,7 @@
   -->
   <link rel="stylesheet" href="/css/normalize.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="/css/application.css">
   <link rel="stylesheet" href="/css/header.css">
@@ -19,7 +20,13 @@
   <title>Atomic6</title>
 </head>
 <body>
-  <header><img id="button_home" /><img id="button_gallery" /><img id="button_contact" /></header>
+  <header>
+    <div id="session"><a href="">Login</a></div>
+    <img id="logo" src="/images/logo.png" />
+    <nav>
+      <a href="">Home</a> <a href="">Blog</a> <a href="">Portfolio</a>
+    </nav>
+  </header>
   <%= yield %>
 </body>
 </html>
