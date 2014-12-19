@@ -1,0 +1,39 @@
+header {
+  margin: 0 auto auto;
+  padding: 0;
+  text-align: center;
+  background: #7f7f7f;
+}
+
+header > img {
+  padding: 2px;
+}
+
+/* Header navigation buttons */
+#button_home {
+  content: url("/images/nav/button_home.gif");
+}
+#button_home:hover {
+  content: url("/images/nav/button_home_hover.gif");
+}
+#button_home:active {
+  content: url("/images/nav/button_home_down.gif");
+}
+#button_gallery {
+  content: url("/images/nav/button_gallery.gif");
+}
+#button_gallery:hover {
+  content: url("/images/nav/button_gallery_hover.gif");
+}
+#button_gallery:active {
+  content: url("/images/nav/button_gallery_down.gif");
+}
+#button_contact {
+  content: url("/images/nav/button_contact.gif");
+}
+#button_contact:hover {
+  content: url("/images/nav/button_contact_hover.gif");
+}
+#button_contact:active {
+  content: url("/images/nav/button_contact_down.gif");
+}
