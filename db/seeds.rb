@@ -5,14 +5,15 @@ module Seed
     User.create!(name: "testUser1", email: "testUser1@whatever.com", twitter: "@testUser1", password: "test1", is_admin: false)
     User.create!(name: "testUser2", email: "testUser2@whatever.com", twitter: "@testUser2", password: "test2", is_admin: false)
 
-    10.times do
+    10.times do # Seed blogs
       title = Faker::Lorem.word
       description = Faker::Lorem.sentence(5)
+      content = Faker::Lorem.sentence(20)
       author_id = rand(1..3)
-      Blog.create(title: title, description: description, author_id: author_id)
+      Blog.create(title: title, description: description, content: content, author_id: author_id)
     end
 
-    20.times do
+    20.times do # Seed posts
       title = Faker::Lorem.word
       content = Faker::Lorem.sentence(10)
       blog_id = rand(1..5)
@@ -20,14 +21,14 @@ module Seed
       Post.create(title: title, content: content, blog_id: blog_id, poster_id: poster_id)
     end
 
-    10.times do
+    10.times do # Seed galleries
       title = Faker::Lorem.word
       description = Faker::Lorem.sentence(5)
       creator_id = rand(1..3)
       Gallery.create(title: title, description: description, creator_id: creator_id)
     end
 
-    20.times do
+    20.times do # Seed projects
       title = Faker::Lorem.word
       content = Faker::Lorem.sentence(10)
       gallery_id = rand(1..5)

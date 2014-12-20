@@ -1,7 +1,9 @@
 <div id="wrapper">
-  <ul>
     <% latest_blogs.each do |blog| %>
-    <li><%= blog.title %></li>
+      <div class="content">
+        <h2><%= blog.title %></h2>
+        <h3><%= blog.description %></h3>
+        <p><%= blog.content %></p>
+      </div>
     <% end %>
-  </ul>
 </div>
