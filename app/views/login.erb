@@ -1,0 +1,18 @@
+<div id="wrapper">
+  <% if @login_error %>
+    <p><span id="login_error">Login error</span></p>
+    <p>Wrong username or password</p>
+  <% elsif @no_user %>
+    <p>User not found</p>
+  <% end %>
+  <section>
+    <form action='/login' method='POST'>
+      <input type="text" name="email" placeholder="email">
+      <input type="password" name="password" placeholder="password">
+      <input id="login" class="button1" type="submit" value="Submit">
+    </form>
+    <form action='/users/new' method='POST'>
+      <input class="button1" type="submit" value="Register">
+    </form>
+  </section>
+</div>

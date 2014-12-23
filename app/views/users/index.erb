@@ -1,0 +1,23 @@
+<div id='wrapper'>
+	<section>
+		<h2>Registered Users</h2>
+		<table>
+			<tr>
+				<td><h4>Name</h4></td><td><h4>Email</h4></td><td><h4>Twitter</h4></td>
+			</tr>
+			<% @users.each do |user| %>
+				<tr>
+					<td>
+						<% if user.is_admin %>
+							<span id='admin'><%= user.name %></span>
+						<% else %>
+							<%= user.name %>
+						<% end %>
+					</td>
+					<td><%= user.email %></td>
+					<td><%= user.twitter %></td>
+				</tr>
+			<% end %>
+		</table>
+	</section>
+</div>
