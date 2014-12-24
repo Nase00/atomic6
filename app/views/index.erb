@@ -1,7 +1,8 @@
 <div id="wrapper">
+	<h1>Latest Blogs</h1>
     <% latest_blogs.each do |blog| %>
       <div class="content">
-        <h2><%= blog.title %></h2>
+        <h2><a href='blogs/<%= blog.id %>'><%= blog.title %></a></h2>
         <h3><%= blog.description %></h3>
         <p><%= blog.content %></p>
         <p>Authored by: <%= blog.author.name %></p>

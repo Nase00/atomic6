@@ -1,0 +1,13 @@
+<div id="wrapper">
+	<h2><%= current_blog.title %></h2>
+	<h3>
+		<%= current_blog.description %>
+		<p>Authored by <a href='../users/<%= current_blog.author.id %>'><%= current_blog.author.name %></a></p>
+	</h3>
+  <div class="content">
+  	<p><%= current_blog.content %></p>
+  </div>
+  <% if authored_blog || logged_in_user.is_admin %>
+  	<span id='options'><a href='/blogs/<%= current_blog.id %>/edit'>Edit</a></span>
+	<% end %>
+</div>

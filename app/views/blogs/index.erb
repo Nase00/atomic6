@@ -1,0 +1,24 @@
+<% if logged_in_user %>
+	<div id="wrapper">
+		<form action='blogs/new' method='GET'>
+			<input type='submit' class='button1' value='New Blog'>
+		</form>
+		<!-- feature to-be-implemented later -->
+		<% if logged_in_user.is_admin %>
+			<form action='blogs/new' method='GET'>
+				<input type='submit' class='button1' value='Remove Blogs'>
+			</form>
+		<% end %>
+	</div>
+<% end %>
+<div id="wrapper">
+	<h1>All Blogs</h1>
+	<!-- I'll come back to this and implement pagination -->
+  <% @blogs.each do |blog| %>
+    <div class="content">
+      <h2><a href='blogs/<%= blog.id %>'><%= blog.title %></a></h2>
+      <h3><%= blog.description %></h3>
+      <p>Authored by: <%= blog.author.name %></p>
+    </div>
+  <% end %>
+</div>

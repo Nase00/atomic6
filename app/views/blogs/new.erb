@@ -1,0 +1,25 @@
+<div id="wrapper">
+	<section>
+		<h3>New Blog</h3>
+		<form action='/blogs' method='POST'>
+			<table id="blogEdit">
+				<tr>
+					<th>Title</th>
+					<td><input id='blogTitle' name='title' type='text' placeholder='title'></td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td><input id='blogDesc' name='description' type='text' placeholder='description'></td>
+				</tr>
+				<tr>
+					<th>Content</th>
+					<td><textarea name='content' rows="10" cols="30" id='blogContent' type='text' placeholder='content'></textarea></td>
+				</tr>
+			</table>
+			<input class="button1" type="submit" value="SUBMIT"></form>
+		    <form action='/blogs' method='GET'>
+			    <input class="button1" type="submit" value="CANCEL">
+		    </form>
+		</form>
+	</section>
+</div>

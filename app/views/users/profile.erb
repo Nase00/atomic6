@@ -1,4 +1,16 @@
 <div id='wrapper'>
 	<h2>Profile</h2>
-	<%= logged_in_user.name %>
+	<table>
+		<tr>
+			<th>Name</th><th>Email</th><th>Twitter</th>
+		</tr>
+			<tr>
+				<td><%= @user.name %></td>
+				<td><%= @user.email %></td>
+				<td><%= @user.twitter %></td>
+			</tr>
+	</table>
+	<% if logged_in_user.is_admin || @user.id == logged_in_user.id %>
+		<a href='/users/<%= logged_in_user.id %>/edit'>Edit profile</a>
+	<% end %>
 </div>

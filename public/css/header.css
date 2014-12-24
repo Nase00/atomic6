@@ -1,7 +1,7 @@
 header {
   margin: 0 auto auto;
   height: 80px;
-  width: 60%;
+  width: 75%;
   background: #7f7f7f;
   border-radius: 10px;
   border: 2px solid #999999;
@@ -15,7 +15,7 @@ header > nav > a {
   text-transform: uppercase;
   color: #FFFFFF;
   padding: 0 10px 0 6px;
-  font: italic normal normal 26px 'Yanone Kaffeesatz';
+  font: italic normal normal 22px 'Yanone Kaffeesatz', Impact;
   text-shadow: 0 0 4px #b2b2b2, 0 0 4px #b2b2b2, 0 0 4px #b2b2b2, 0 0 4px #b2b2b2, 0 0 4px #7f7f7f;
   border: 1px solid #000000;
   border-color: #bfbfbf;
@@ -34,15 +34,16 @@ header > nav > a:active {
 }
 
 nav {
+  position: absolute;
   margin: 0 auto auto;
   padding: 22px;
-  float: right;
+  right: 12%;
 }
 
 #session, #session > a {
   margin: 0 auto auto;
   padding: 4px;
-  width: 60%;
+  width: 75%;
   font-size: 10px;
   text-align: right;
   color: #FFFFFF;
@@ -53,5 +54,6 @@ nav {
 }
 
 #logo {
+  float: left;
   border: 0;
 }

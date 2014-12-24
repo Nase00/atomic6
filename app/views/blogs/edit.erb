@@ -1,0 +1,30 @@
+<div id="wrapper">
+	<section>
+		<% if authored_blog %>
+		  <h3>Edit your blog</h3>
+	  <% else %>
+	  	<h3>Edit <%= current_blog.author.name %>'s blog</h3>
+  	<% end %>
+		<form action='/blogs/<%= current_blog.id %>' method='POST'>
+			<table id="blogEdit">
+				<tr>
+					<th>Title</th>
+					<td><input id='blogTitle' name='title' type='text' value='<%= current_blog.title %>'></td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td><input id='blogDesc' name='description' type='text' value='<%= current_blog.description %>'></td>
+				</tr>
+				<tr>
+					<th>Content</th>
+					<td><textarea name='content' rows="10" cols="30" id='blogContent' type='text' value='<%= current_blog.content %>'><%= current_blog.content %></textarea></td>
+				</tr>
+			</table>
+			<input type="hidden" name="_method" value="put" />
+			<input class="button1" type="submit" value="SUBMIT"></form>
+		    <form action='/blogs/<%= current_blog.id %>' method='GET'>
+			    <input class="button1" type="submit" value="CANCEL">
+		    </form>
+		</form>
+	</section>
+</div>

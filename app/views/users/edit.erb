@@ -1,0 +1,38 @@
+<div id="wrapper">
+	<section>
+		<h2>Profile - <%= @user.name %></h2>
+	  <h3>Edit your details</h3>
+	  <form action='/users/<%= @user.id %>' method='POST'>
+	  	<table>
+		  	<tr><td><input type="text" value='<%= @user.name %>' name="name" placeholder="name"></td></tr>
+		    <tr><td><input type="text" value='<%= @user.email %>' name="email" placeholder="email"></td></tr>
+		    <tr><td><input type="text" value='<%= @user.twitter %>' name="twitter" placeholder="Twitter"></td></tr>
+		    <tr><td><input type="password" name="password" placeholder="Confirm password to change details"></td></tr>
+		    <tr><td>
+		    	<input type="hidden" name="_method" value="put" />
+	    	</td></tr>
+		    <tr>
+			    <td>
+				    <input class="button1" type="submit" value="SUBMIT"></form>
+				    <form action='/users/<%= @user.id %>' method='GET'>
+					    <input class="button1" type="submit" value="CANCEL">
+				    </form>
+			    </td>
+		    </tr>
+		      <% if @incorrect_password %>
+						<tr>
+							<td>
+								<div id="center"><span id='loginError'>Incorrect password, please try again.</span></div>
+							</td>
+						</tr>
+					<% end %>
+		  	  <tr>
+			  	  <td>
+				  	  <form action='/users/password' method='GET'>
+				    		<input class="button2" type="submit" value="CHANGE PASSWORD">
+			    		</form>
+		    		</td>
+	    		</tr>
+		    </table>
+  </section>
+</div>

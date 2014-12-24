@@ -1,11 +1,13 @@
 <div id="wrapper">
-  <% if @login_error %>
-    <p><span id="login_error">Login error</span></p>
-    <p>Wrong username or password</p>
-  <% elsif @no_user %>
-    <p>User not found</p>
-  <% end %>
   <section>
+    <% if @login_error %>
+      <p><span id="loginError">Login error</span></p>
+      <p>Wrong username or password</p>
+    <% elsif @no_user %>
+      <p>User not found</p>
+    <% elsif @must_login %>
+      <p>You must login to view that page</p>
+    <% end %>
     <form action='/login' method='POST'>
       <input type="text" name="email" placeholder="email">
       <input type="password" name="password" placeholder="password">

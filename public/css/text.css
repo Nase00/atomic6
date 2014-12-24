@@ -1,0 +1,43 @@
+/* Text-specific selectors */
+
+#admin::after {
+  content: "*";
+}
+
+#center {
+  margin: 0 auto auto;
+  text-align: center;
+}
+
+h1 {
+	margin: 0;
+}
+h2, h2 > a {
+  margin: 0;
+  color: #002A3F;
+  text-decoration: none;
+}
+h3 {
+  margin: 0;
+  font-size: 16px;
+}
+h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+p {
+	margin: 2px;
+}
+
+#options, #options > a {
+	padding: 2px;
+	color: #00547f;
+	text-decoration: none;
+	border-top: 1px solid #00547f;
+}
+
+#loginError {
+	font-weight: bold;
+	color: #7f3f3f;
+}
