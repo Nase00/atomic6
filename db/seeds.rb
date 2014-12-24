@@ -8,14 +8,14 @@ module Seed
     10.times do # Seed blogs
       title = Faker::Lorem.word
       description = Faker::Lorem.sentence(5)
-      content = Faker::Lorem.sentence(20)
+      content = Faker::Lorem.sentence(200)
       author_id = rand(1..3)
       Blog.create(title: title, description: description, content: content, author_id: author_id)
     end
 
     20.times do # Seed posts
       title = Faker::Lorem.word
-      content = Faker::Lorem.sentence(10)
+      content = Faker::Lorem.sentence(50)
       blog_id = rand(1..5)
       poster_id = rand(1..3)
       Post.create(title: title, content: content, blog_id: blog_id, poster_id: poster_id)
