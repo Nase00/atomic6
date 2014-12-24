@@ -4,7 +4,8 @@
 }
 html {
   background-color: #404040;
-  background-image: url('/images/background.gif');
+  background-image: url('/images/background.png');
+  background-position: -100px -100px;
   background-repeat: no-repeat;
   color: #262626;
 }
