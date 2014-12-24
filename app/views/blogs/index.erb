@@ -1,5 +1,5 @@
-<% if logged_in_user %>
-	<div id="wrapper">
+<div id="wrapper">
+	<% if logged_in? %>
 		<form action='blogs/new' method='GET'>
 			<input type='submit' class='button1' value='New Blog'>
 		</form>
@@ -9,8 +9,10 @@
 				<input type='submit' class='button1' value='Remove Blogs'>
 			</form>
 		<% end %>
-	</div>
-<% end %>
+	<% else %>
+		<p>You can create blogs by <a href='../login'>logging in</a></p>
+	<% end %>
+</div>
 <div id="wrapper">
 	<h1>All Blogs</h1>
 	<!-- I'll come back to this and implement pagination -->
