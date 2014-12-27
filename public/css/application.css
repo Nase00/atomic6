@@ -18,7 +18,7 @@ html {
   border-radius: 10px;
   border: 2px solid #999999;
   box-shadow: 0 0 0 2px #b2b2b2;
-  background: linear-gradient(0deg, #c8c8c8, #f2f2f2);
+  background: linear-gradient(0deg, #d8d8d8, #f2f2f2);
 }
 #optionsWrapper {
   margin: 2px;
@@ -42,7 +42,6 @@ th, td {
   vertical-align: text-top;
   text-align: left;
   border-radius: 10px;
-  
 }
 
 

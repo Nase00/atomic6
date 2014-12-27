@@ -2,10 +2,11 @@
 	<form action='/blogs' method='GET'>
 		<input type='submit' class='button1' value='Return to Index'>
 	</form>
-	<form action='../blogs/new' method='GET'>
-		<input type='submit' class='button1' value='New Blog'>
-	</form>
-		
+	<% if logged_in? %>
+		<form action='../blogs/new' method='GET'>
+			<input type='submit' class='button1' value='New Blog'>
+		</form>
+	<% end %>
 </div>
 
 <div id="wrapper">
@@ -15,8 +16,8 @@
   	<p><%= markdown(current_blog.content) %></p>
   </div>
   <div id="optionsWrapper">
-	  <form action="/comments/new" method='GET'>
-		  <input class="buttonSmall" type="submit" value="Comment">
+	  <form action="/blogs/<%= current_blog.id %>/comments/new" method='GET'>
+		  <input class="buttonSmall makeComment" type="submit" value="Comment">
 	  </form>
 	  <% if privilaged %>
 			<form action='/blogs/<%= current_blog.id %>/edit' method='GET'>
@@ -27,17 +28,48 @@
 	  		<input class="buttonSmall" type="submit" value="Delete">
 			</form>
 		<% end %>
-		<input id="doToggle" class="buttonWide commentsToggle" type="submit" value="Display Comments: <%= current_blog.posts.count %>">
+		<input id="doToggle" class="buttonWide commentsToggle" type="submit" value="Display Comments: <%= current_blog.comments.count %>">
 	</div>
+</div>
+
+<div id="wrapper" class="toggleMakeComment">
+	<section>
+		<h3>Submit Comment</h3>
+		<form id='commentForm' action='/blogs/<%= current_blog.id %>' method='POST'>
+			<table id="blogEdit">
+				<tr>
+					<td><input id='commentTitle' name='title' type='text' placeholder='title'></td>
+				</tr>
+				<tr>
+					<td>
+						<textarea id='postContent' name='content' rows="4" cols="20" type='text' placeholder='content'></textarea>
+						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown supported</a></h5>
+					</td>
+				</tr>
+			</table>
+			<input id='submitComment' class="button1" type="submit" value="SUBMIT"></form>
+	    <form action='/blogs' method='GET'>
+		    <input class="button1 makeComment" type="submit" value="CANCEL">
+	    </form>
+	    <% if @error %>
+		    <p id="error"><%= @error %></p>
+	    <% end %>
+		</form>
+	</section>
 </div>
 
 <div id="wrapper" class="toggle">
 	<h2>Comments</h2>
-  <% current_blog.posts.each do |post| %>
+	<div class="content">
+		  <h2 id="postTitle" class="newPostTitle"></h4>
+		  <span id="postAuthor" class="newPostAuthor"></span>
+		  <div id="postContent" class="newPostContent"></div>
+	  </div>
+  <% comments(current_blog).each do |comment| %>
 	  <div class="content">
-		  <h2 id="postTitle"><%= post.title %></h4>
-		  <span id="postAuthor"><a href="/users/<%= post.poster.id %>"><%= post.poster.name %></a></span>
-		  <div id="postContent"><%= markdown(post.content) %></div>
+		  <h2 id="postTitle"><%= comment.title %></h4>
+		  <span id="postAuthor"><a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a></span>
+		  <div id="postContent"><%= markdown(comment.content) %></div>
 	  </div>
   <% end %>
 </div>

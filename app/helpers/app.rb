@@ -3,6 +3,10 @@ helpers do
 		Blog.all.reverse
 	end
 
+	def comments(model)
+		model.comments.reverse
+	end
+
 	def time(model)
 		if model.created_at == model.updated_at
 			model.created_at.strftime("on %m/%d/%Y at %I:%M%p")

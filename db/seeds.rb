@@ -13,12 +13,12 @@ module Seed
       Blog.create(title: title, description: description, content: content, author_id: author_id)
     end
 
-    200.times do # Seed posts
+    200.times do # Seed comments
       title = Faker::Lorem.word
       content = Faker::Lorem.sentence(50)
       blog_id = rand(1..5)
-      poster_id = rand(1..3)
-      Post.create(title: title, content: content, blog_id: blog_id, poster_id: poster_id)
+      commenter_id = rand(1..3)
+      Comment.create(title: title, content: content, blog_id: blog_id, commenter_id: commenter_id)
     end
 
     25.times do # Seed galleries
