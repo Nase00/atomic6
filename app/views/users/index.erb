@@ -9,9 +9,9 @@
 				<tr>
 					<td>
 						<% if user.is_admin %>
-							<span id='admin'><a href='users/<%= user.id %>'><%= user.name %></a></span>
+							<h5><span id='admin'><a href='users/<%= user.id %>'><%= user.name %></a></span></h5>
 						<% else %>
-							<a href='users/<%= user.id %>'><%= user.name %></a>
+							<h5><a href='users/<%= user.id %>'><%= user.name %></a></h5>
 						<% end %>
 					</td>
 					<td><%= user.email %></td>

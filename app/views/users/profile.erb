@@ -11,6 +11,10 @@
 			</tr>
 	</table>
 	<% if logged_in_user.is_admin || @user.id == logged_in_user.id %>
-		<a href='/users/<%= logged_in_user.id %>/edit'>Edit profile</a>
+		<div id="optionsWrapper">
+			<form action='/users/<%= logged_in_user.id %>/edit' method='GET'>
+				<input class='buttonSmall' type='submit' value='Edit Profile'>
+			</form>
+		</div>
 	<% end %>
 </div>

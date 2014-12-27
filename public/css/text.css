@@ -34,14 +34,21 @@ h5 {
   font-size: 12px;
 }
 
+h5 > a, h5 > a:visited, td > a, td > a:visited {
+  color: #262645;
+  /*text-decoration: none;*/
+}
+h5 > a:hover, td > a:hover {
+  color: #263f4c;
+}
+h5 > a:active, td > a:active {
+  color: #ffffff;
+}
 p {
 	margin: 2px;
 }
 
-#blogEdit {
-  text-align: center;
-  border-top: 1px solid #000000;
-}
+
 #blogTitle, #postTitle {/
   padding-left: 6px;
 }

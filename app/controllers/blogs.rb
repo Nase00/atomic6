@@ -1,12 +1,10 @@
 get '/blogs' do
-  @blogs = Blog.all
+  @blogs = blogs
   erb :'blogs/index'
 end
 
 get '/blogs/new' do
-	@all_blank = params["all_blank"] == "true"
-  @title_blank = params["title_blank"] == "true"
-  @content_blank = params["content_blank"] == "true"
+  @error = params.keys.first.sub(/Validation failed: /, '') if @error
 	erb :'blogs/new'
 end
 
@@ -15,7 +13,7 @@ post '/blogs' do
 	if catch_errors(@blog) == true
 		redirect :"/blogs/#{@blog.id}"
 	else
-		redirect :"/blogs/new?#{catch_errors(@blog)}=true"
+		redirect :"/blogs/new?#{catch_errors(@blog)}"
 	end
 end
 

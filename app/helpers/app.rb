@@ -1,4 +1,24 @@
 helpers do
+	def blogs
+		Blog.all.reverse
+	end
+
+	def time(model)
+		if model.created_at == model.updated_at
+			model.created_at.strftime("on %m/%d/%Y at %I:%M%p")
+		else
+			model.created_at.strftime("on %m/%d/%Y at %I:%M%p") + model.updated_at.strftime(" and edited on %m/%d/%Y at %I:%M%p")
+		end
+	end
+
+	# def updated(model)
+	# 	if model.created_at == model.updated_at
+	# 		false
+	# 	else
+	# 		model.updated_at.strftime("on %m/%d/%Y at %I:%M%p")
+	# 	end
+	# end
+
 	def privilaged # Determines element visibility based on user status
 		if logged_in?
 			authored_blog || logged_in_user.is_admin
