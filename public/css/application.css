@@ -8,9 +8,10 @@ html {
   background-position: -130px -100px;
   background-repeat: no-repeat;
   color: #262626;
+  overflow-y: scroll;
 }
 
-#wrapper {
+#wrapper, #showWrapper {
   margin: 15px auto auto;
   padding: 10px;
   width: 75%;
@@ -19,6 +20,9 @@ html {
   border: 2px solid #999999;
   box-shadow: 0 0 0 2px #b2b2b2;
   background: linear-gradient(0deg, #c8c8c8, #f2f2f2);
+}
+#showWrapper {
+  padding-bottom: 26px;
 }
 
 .content {
@@ -37,7 +41,7 @@ li {
 }
 
 section {
-  margin: 4px auto auto;
+
   width: 400px;
 }
 form {
@@ -53,37 +57,45 @@ input, textarea {
   border-radius: 6px;
   border: 0;
 }
+.toggle {
+  display: none;
+}
+.checkbox {
+  height: 20px;
+  width: 20px;
+}
 
-.button1, .button2 {
+.button1, .button2, .buttonSmall, .buttonWide {
   margin: 4px 0 4px 0;
   border-radius: 6px;
   border: 0;
   color: #ffffff;
   background-color: #192a33;
 }
-.button1:hover, .button2:hover {
+.button1:hover, .button2:hover, .buttonSmall:hover, .buttonWide:hover {
   background: #263f4c;
+}
+.button1:active, .button2:active, .buttonSmall:active, .buttonWide:active {
+  background: #335566;
 }
 .button1 {
   font-size: 16px;
   width: 194px;
 }
-
-/* Blog Edit Fields */
-
-#blogEdit {
-  text-align: center;
-  border-top: 1px solid #00547f;
+.buttonSmall, .buttonWide {
+  margin: 2px 2px 2px 2px;
+  padding: 0;
+  font-size: 12px;
 }
-#blogTitle {
-  font-size: 24px;
+.buttonSmall {
+  float: right;
+  height: 20px;
+  width: 60px;
 }
-#blogDesc {
-  font-size: 16px;
-}
-#blogContent {
-  height: 300px;
-  padding: 3px 3px 80px 3px;
-  vertical-align: text-top;
-  font-size: 16px;
+.buttonWide {
+  float: left;
+  display: block;
+  font-size: 12px;
+  height: 20px;
+  width: 400px;
 }

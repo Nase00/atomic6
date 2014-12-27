@@ -1,13 +1,28 @@
-<div id="wrapper">
-	<h2><%= current_blog.title %></h2>
-	<h3>
-		<%= current_blog.description %>
-		<p>Authored by <a href='../users/<%= current_blog.author.id %>'><%= current_blog.author.name %></a></p>
-	</h3>
-  <div class="content">
-  	<p><%= current_blog.content %></p>
+<div id="showWrapper">
+	<h1 id="blogTitle"><%= current_blog.title %></h1><h5 id="blogAuthor">Authored by: <%= current_blog.author.name %></h5>
+	<h3 id="blogDesc"><%= current_blog.description %></h3>
+  <div id="blogContent">
+  	<p><%= markdown(current_blog.content) %></p>
   </div>
-  <% if authored_blog || logged_in_user.is_admin %>
-  	<span id='options'><a href='/blogs/<%= current_blog.id %>/edit'>Edit</a></span>
+  <input class="buttonSmall" type="submit" value="Comment">
+  <% if privilaged %>
+		<form action='/blogs/<%= current_blog.id %>/edit' method='GET'>
+			<input class="buttonSmall" type="submit" value="Edit">
+		</form> 
+		<form action='/blogs/<%= current_blog.id %>' method='POST'>
+  		<input type="hidden" name="_method" value="DELETE" />
+  		<input class="buttonSmall" type="submit" value="Delete">
+		</form>
 	<% end %>
+	<input id="doToggle" class="buttonWide commentsToggle" type="submit" value="Display Comments: <%= current_blog.posts.count %>">
+</div>
+<div id="wrapper" class="toggle">
+	<h2>Comments</h2>
+  <% current_blog.posts.each do |post| %>
+	  <div class="content">
+		  <h2 id="postTitle"><%= post.title %></h4>
+		  <span id="postAuthor"><a href="/users/<%= post.poster.id %>"><%= post.poster.name %></a></span>
+		  <div id="postContent"><%= markdown(post.content) %></div>
+	  </div>
+  <% end %>
 </div>

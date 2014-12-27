@@ -13,11 +13,11 @@ post '/login' do
     # content_type :json
     # @user.to_json
     session[:logged_in_user_id] = @user.id
-    redirect '/'
+    redirect :'/'
   elsif @user.nil?
-    redirect '/login?no_user=true'
+    redirect :'/login?no_user=true'
   else
-    redirect '/login?login_error=true'
+    redirect :'/login?login_error=true'
   end
 end
 
@@ -25,5 +25,5 @@ end
 
 get '/logout' do
   session[:logged_in_user_id] = nil
-  redirect '/'
+  redirect :'/'
 end

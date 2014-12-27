@@ -25,7 +25,7 @@
     <% if logged_in? %>
     Welcome, <a href='/users/<%= logged_in_user.id %>'><%= logged_in_user.name %></a>
       <% if logged_in_user.is_admin %>
-        &mdash; Admin Panel
+        &mdash;You are logged in as an admin
       <% end %>
       &mdash; <a href="/logout">Logout</a>
     <% else %>
@@ -35,7 +35,7 @@
   <header>
     <img id="logo" src="/images/logo.png" />
     <nav>
-      <a href="/">Home</a> <a href="/blogs">Blog</a> <a href="">Portfolio</a> <a href="/users">Users</a> <a href="">About</a>
+      <a href="/">Home</a> <a href="/blogs">Blog</a> <a href="">Portfolio</a> <a href="/users">Users</a> <a href="/about">About</a>
     </nav>
   </header>
   <%= yield %>

@@ -19,20 +19,20 @@
 				    </form>
 			    </td>
 		    </tr>
-		      <% if incorrect_password %>
-						<tr>
-							<td>
-								<div id="center"><span id='loginError'>Incorrect password, please try again.</span></div>
-							</td>
-						</tr>
-					<% end %>
-		  	  <tr>
-			  	  <td>
-				  	  <form action='/users/password' method='GET'>
-				    		<input class="button2" type="submit" value="CHANGE PASSWORD">
-			    		</form>
-		    		</td>
-	    		</tr>
-		    </table>
+	      <% if incorrect_password %>
+					<tr>
+						<td>
+							<div id="center"><span id='error'>Incorrect password, please try again.</span></div>
+						</td>
+					</tr>
+				<% end %>
+	  	  <tr>
+		  	  <td>
+			  	  <form action='/users/password' method='GET'>
+			    		<input class="button2" type="submit" value="CHANGE PASSWORD">
+		    		</form>
+	    		</td>
+    		</tr>
+	    </table>
   </section>
 </div>

@@ -4,16 +4,29 @@ get '/blogs' do
 end
 
 get '/blogs/new' do
+	@all_blank = params["all_blank"] == "true"
+  @title_blank = params["title_blank"] == "true"
+  @content_blank = params["content_blank"] == "true"
 	erb :'blogs/new'
 end
 
 post '/blogs' do
 	@blog = Blog.new(title: params[:title], description: params[:description], content: params[:content], author_id: logged_in_user.id)
-	if @blog.save
+	if catch_errors(@blog) == true
 		redirect :"/blogs/#{@blog.id}"
 	else
-		erb :'/blogs/new'
+		redirect :"/blogs/new?#{catch_errors(@blog)}=true"
 	end
+end
+
+delete '/blogs/all' do # Probably not RESTful, come back to this
+	Blog.destroy(params[:selected_blog].keys)
+	redirect :'blogs'
+end
+
+delete '/blogs/:id' do
+	Blog.destroy(params[:id])
+	redirect :'/blogs'
 end
 
 get '/blogs/:id' do
@@ -25,10 +38,6 @@ get '/blogs/:id/edit' do
 end
 
 put '/blogs/:id' do
-	# if params[:content]
-	  current_blog.update(title: params[:title], description: params[:description], content: params[:content])
-	  redirect :"/blogs/#{current_blog.id}"
-	# else
-	# 	# erb :"/blogs/#{current_blog.id}/edit?too_long=true"
-	# end
+  current_blog.update(title: params[:title], description: params[:description], content: params[:content])
+  redirect :"/blogs/#{current_blog.id}"
 end
