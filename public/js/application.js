@@ -3,7 +3,7 @@ $(document).ready(function() {
   var Toggle = function(clickSelector, toggleSelector) {
     clickSelector.click(function(e){
       e.preventDefault()
-      toggleSelector.fadeToggle(50)
+      toggleSelector.slideToggle(50)
     })
   }
 
@@ -16,7 +16,7 @@ $(document).ready(function() {
       value = value.replace("Hide Comments:", "Display Comments:")
     };
     toggle.val(value)
-    $('.toggle').fadeToggle(50);
+    $('.toggle').slideToggle(50);
   }
 
   Toggle($('.deleteBlogs'), $('.toggle'))
@@ -38,7 +38,7 @@ $(document).ready(function() {
       data: $("#commentForm").serialize()
     })
     
-    $('.toggleMakeComment').fadeToggle(50)
+    $('.toggleMakeComment').slideToggle(50)
 
     request.done(function(response){
       CommentToggleBar($('.commentsToggle'))
