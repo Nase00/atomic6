@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.belongs_to :commenter
-      t.belongs_to :author
+      # t.belongs_to :author
       t.belongs_to :blog
 
       t.timestamps

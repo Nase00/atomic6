@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.deleteBlogs').click(function(){
-    $('.toggle').toggle()
+    $('.toggle').fadeToggle(50)
   })
 
   // Fuck this is messy and not DRY
@@ -16,7 +16,7 @@ $(document).ready(function() {
           value = value.replace("Hide Comments:", "Display Comments:")
         };
         $(this).val(value)
-        $('.toggle').toggle()
+        $('.toggle').fadeToggle(50)
       })
     }
   }
@@ -29,37 +29,28 @@ $(document).ready(function() {
       var value = $('.commentsToggle').val()
       value = value.replace("Hide Comments:", "Display Comments:")
     };
-    $('.toggleMakeComment').toggle()
+    $('.toggleMakeComment').fadeToggle(50)
   })
 
   $('#submitComment').click(function(e) {
     e.preventDefault()
-    var id = 25
-    console.log(e)
+    var url = ("/blogs/" + $(e.currentTarget).attr("dir") + "/comments");
+    console.log(url);
     var request = $.ajax({
-      url: "/blogs/" + id + "/comments",
+      url: "/blogs/" + $(e.currentTarget).attr("dir") + "/comments",
       method: "post",
       dataType: "json",
       data: $("#commentForm").serialize()
     })
 
-    if($('.commentsToggle').val().match(/Display Comments: \d*/)) {
-      var value = $('.commentsToggle').val()
-      value = value.replace("Display Comments:", "Hide Comments:")
-    };
-    $('.toggleMakeComment').toggle()
-    $('.commentsToggle').val(value)
-    $('.toggle').show()
+    toggle.comments();
+    
+    $('.toggleMakeComment').fadeToggle(50)
 
     request.done(function(response){
-      console.log(response)
+      $('.newContent').show()
       $('.newPostTitle').append(response.title)
       $('.newPostContent').append(response.content)
-
-      // var commenter = function(response.commenter_id) {
-      //   return 'User.find(' + response.commenter_id + ')';
-      // }
-      $('.newPostAuthor').append(response.commenter_id)
     });
   })
 
@@ -73,7 +64,7 @@ $(document).ready(function() {
   //   })
 
   //   request.done(function(response){
-  //     $('.toggle').toggle()
+  //     $('.toggle').fadeToggle(50)
   //   });
   // })
 });

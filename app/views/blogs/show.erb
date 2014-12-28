@@ -10,11 +10,12 @@
 </div>
 
 <div id="wrapper">
-	<h1 id="blogTitle"><%= current_blog.title %></h1><h5 id="blogAuthor">Authored by <a href="/users/<%= current_blog.author.id %>"><%= current_blog.author.name %></a> <%= time(current_blog) %></h5>
+	<h1 id="blogTitle"><%= current_blog.title %></h1>
 	<h3 id="blogDesc"><%= current_blog.description %></h3>
-  <div id="blogContent">
-  	<p><%= markdown(current_blog.content) %></p>
-  </div>
+  <div id="blogContent"><p><%= markdown(current_blog.content) %></p></div>
+	<h5 id="blogAuthor">
+		Authored by <a href="/users/<%= current_blog.author.id %>"><%= current_blog.author.name %></a> <%= time(current_blog) %>
+	</h5>
   <div id="optionsWrapper">
 	  <form action="/blogs/<%= current_blog.id %>/comments/new" method='GET'>
 		  <input class="buttonSmall makeComment" type="submit" value="Comment">
@@ -43,11 +44,11 @@
 				<tr>
 					<td>
 						<textarea id='postContent' name='content' rows="4" cols="20" type='text' placeholder='content'></textarea>
-						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown supported</a></h5>
+						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
 					</td>
 				</tr>
 			</table>
-			<input id='submitComment' class="button1" type="submit" value="SUBMIT"></form>
+			<input dir='<%= current_blog.id %>' id='submitComment' class="button1" type="submit" value="SUBMIT"></form>
 	    <form action='/blogs' method='GET'>
 		    <input class="button1 makeComment" type="submit" value="CANCEL">
 	    </form>
@@ -60,16 +61,18 @@
 
 <div id="wrapper" class="toggle">
 	<h2>Comments</h2>
-	<div class="content">
-		  <h2 id="postTitle" class="newPostTitle"></h4>
-		  <span id="postAuthor" class="newPostAuthor"></span>
-		  <div id="postContent" class="newPostContent"></div>
-	  </div>
+	<div class="newContent">
+	  <h2 id="postTitle" class="newPostTitle"></h2>
+	  <div id="postContent" class="newPostContent"></div>
+	  <h5 id="postAuthor">
+		  Posted by <a href='/users/<%= logged_in_user.id %>'><%= logged_in_user.name %></a> <i>just now</i>
+	  </h5>
+  </div>
   <% comments(current_blog).each do |comment| %>
 	  <div class="content">
-		  <h2 id="postTitle"><%= comment.title %></h4>
-		  <span id="postAuthor"><a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a></span>
+		  <h2 id="postTitle"><%= comment.title %></h2>
 		  <div id="postContent"><%= markdown(comment.content) %></div>
+		  <h5 id="postAuthor">Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %></h5>
 	  </div>
   <% end %>
 </div>

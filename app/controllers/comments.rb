@@ -7,5 +7,4 @@ post '/blogs/:id/comments' do
 	content_type :json
 	comment.save
 	comment.to_json
-
 end

@@ -4,7 +4,7 @@ class CreateBlogs < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.text :content
-      t.integer :author_id
+      t.belongs_to :author
 
       t.timestamps
     end

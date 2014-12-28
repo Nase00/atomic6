@@ -25,19 +25,21 @@ html {
   height: 14px;
 }
 
-.content {
+.content, .newContent {
   margin: 0;
   padding: 4px;
+}
+.newContent {
+  display: none;
 }
 
 table {
   margin: 10px;
   border-radius: 10px;
-  background-color: rgba(200,200,200,0.5);
-  box-shadow: 0px 0px 0px 1px rgba(100,100,100,0.5); 
+  /*background-color: rgba(200,200,200,0.5);*/
+  /*box-shadow: 0px 0px 0px 1px rgba(100,100,100,0.5); */
 }
 th, td {
-  margin: 2px;
   padding: 4px 12px 4px 12px;
   vertical-align: text-top;
   text-align: left;
@@ -49,24 +51,23 @@ li {
   list-style-type: none;
 }
 
-section {
-
-  width: 400px;
-}
 form {
   display: inline;
 
 }
 input, textarea {
   display: inline-block;
-  width: 394px;
-  margin: 4px 0 4px 0;
+  width: 400px;
+  margin: 5px;
   padding: 6px;
   outline: none;
   border-radius: 6px;
   border: 0;
 }
 .toggle {
+  display: none;
+}
+.toggleMakeComment {
   display: none;
 }
 .checkbox {

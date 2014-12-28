@@ -9,7 +9,7 @@ get '/users/password' do
 end
 
 post '/users/password' do
-	if params[:newPassword] == params[:confirmPassword]
+	if password_matcher
 		if logged_in_user.authenticate(params[:oldPassword])
 			logged_in_user.update(password: params[:newPassword])
 			redirect :"users/#{logged_in_user.id}"
@@ -44,8 +44,7 @@ post '/users/new' do
   end
 end
 
-get '/users/:id/edit' do
-	# @incorrect_password = params["incorrect_password"] == "true" # NOT DRY
+get '/users/:id/edit' do # Allow only admin to edit any user
   logged_in_user.is_admin	 ? @user = User.find(params[:id]) : @user = logged_in_user
   erb :'users/edit'
 end
