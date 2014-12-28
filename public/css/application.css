@@ -75,24 +75,24 @@ input, textarea {
   width: 20px;
 }
 
-.button1, .button2, .buttonSmall, .buttonWide {
+.button1, .button2, .buttonSmall, .buttonExtraSmall, .buttonWide {
   margin: 4px 0 4px 0;
   border-radius: 6px;
   border: 0;
   color: #ffffff;
   background-color: #192a33;
 }
-.button1:hover, .button2:hover, .buttonSmall:hover, .buttonWide:hover {
+.button1:hover, .button2:hover, .buttonSmall:hover, .buttonExtraSmall:hover, .buttonWide:hover {
   background: #263f4c;
 }
-.button1:active, .button2:active, .buttonSmall:active, .buttonWide:active {
+.button1:active, .button2:active, .buttonSmall:active, .buttonExtraSmall:active, .buttonWide:active {
   background: #335566;
 }
 .button1 {
   font-size: 16px;
   width: 194px;
 }
-.buttonSmall, .buttonWide {
+.buttonSmall, .buttonExtraSmall, .buttonWide {
   margin: 2px 2px 2px 2px;
   padding: 0;
   font-size: 12px;
@@ -101,6 +101,12 @@ input, textarea {
   float: right;
   height: 20px;
   width: 60px;
+}
+.buttonExtraSmall {
+  /*float: right;*/
+  font-size: 12px;
+  height: 16px;
+  width: 50px;
 }
 .buttonWide {
   float: left;

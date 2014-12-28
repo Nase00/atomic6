@@ -73,6 +73,15 @@
 		  <h2 id="postTitle"><%= comment.title %></h2>
 		  <div id="postContent"><%= markdown(comment.content) %></div>
 		  <h5 id="postAuthor">Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %></h5>
+		  <% if privilaged %>
+		  	<form action='/comments/<%= current_blog.id %>/edit' method='GET'>
+					<input class="buttonExtraSmall" type="submit" value="Edit">
+				</form> 
+				<form action='/comments/<%= current_blog.id %>' method='POST'>
+		  		<input type="hidden" name="_method" value="DELETE" />
+		  		<input class="buttonExtraSmall" type="submit" value="Delete">
+				</form>
+		  <% end %>
 	  </div>
   <% end %>
 </div>
