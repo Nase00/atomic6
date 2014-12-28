@@ -1,24 +1,20 @@
 <div id="wrapper">
 	<section>
 		<% if authored %>
-		  <h3>Edit your blog</h3>
+		  <h3>Edit your comment</h3>
 	  <% else %>
-	  	<h3>Edit <%= current_blog.author.name %>'s blog</h3>
+	  	<h3>Edit <%= current_comment.commenter.name %>'s comment</h3>
   	<% end %>
-		<form action='/blogs/<%= current_blog.id %>' method='POST'>
+		<form action='/blogs/<%= current_blog.id %>/comments/<%= current_comment.id %>' method='POST'>
 			<table id="blogEdit">
 				<tr>
 					<th>Title</th>
-					<td><input id='blogTitle' name='title' type='text' value='<%= current_blog.title %>'></td>
-				</tr>
-				<tr>
-					<th>Description</th>
-					<td><input id='blogDesc' name='description' type='text' value='<%= current_blog.description %>'></td>
+					<td><input id='blogTitle' name='title' type='text' value='<%= current_comment.title %>'></td>
 				</tr>
 				<tr>
 					<th>Content</th>
 					<td>
-						<textarea name='content' rows="10" cols="30" id='blogContent' type='text' value='<%= current_blog.content %>'><%= current_blog.content %></textarea>
+						<textarea name='content' rows="10" cols="30" id='blogContent' type='text' value='<%= current_comment.content %>'><%= current_comment.content %></textarea>
 						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
 					</td>
 				</tr>

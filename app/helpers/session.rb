@@ -13,7 +13,7 @@ helpers do
 
 	def privilaged # Determines element visibility based on user status
 		if logged_in?
-			authored_blog || logged_in_user.is_admin
+			authored || logged_in_user.is_admin
 		else
 			false
 		end

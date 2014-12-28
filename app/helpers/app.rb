@@ -15,20 +15,18 @@ helpers do
 		end
 	end
 
-	def privilaged # Determines element visibility based on user status
-		if logged_in?
-			authored_blog || logged_in_user.is_admin
-		else
-			false
-		end
-	end
-
 	def current_blog
-		Blog.find(params[:id])
+		Blog.find(params[:blog_id])
 	end
 
-  def authored_blog # Validates if the user created the blog they are viewing
-  	current_blog.author.id == logged_in_user.id if params[:id]
+	def current_comment
+		Comment.find(params[:comment_id])
+	end
+
+  def authored # Validates if the user created the blog they are viewing
+  	if params[:id]
+  		current_blog.author.id == logged_in_user.id || current_comment.commenter.id == logged_in_user.id
+  	end
 	end
 
   def latest_blogs # Queries latest 5 blog entries by admin

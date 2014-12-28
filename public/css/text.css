@@ -8,6 +8,12 @@
   margin: 0 auto auto;
   text-align: center;
 }
+#right {
+  float: right;
+  padding: 4px;
+  font-size: 10px;
+  color: #262645;
+}
 
 h1 {
 	margin: 0;
@@ -28,12 +34,6 @@ h4 {
 h5 {
   margin: 0;
 }
-
-#poster {
-  padding-left: 20px;
-  font-size: 12px;
-}
-
 h5 > a, h5 > a:visited, td > a, td > a:visited {
   color: #262645;
 }
@@ -46,15 +46,19 @@ h5 > a:active, td > a:active {
 p {
 	margin: 2px;
 }
+#commenter {
+  padding-left: 20px;
+  font-size: 12px;
+}
 
 
-#blogTitle, #postTitle {/
+#blogTitle, #commentTitle {/
   padding-left: 6px;
 }
 #blogDesc {
   padding-left: 10px;
 }
-#blogContent, #postContent {
+#blogContent {
   margin: 5px;
   padding: 3px;
   color: #262626;
@@ -65,23 +69,26 @@ p {
   border-bottom: 2px solid rgba(100,100,100,0.1);
   /*box-shadow: 0px 0px 0px 4px rgba(100,100,100,0.1); */
 }
-#blogAuthor, #postAuthor {
+#blogAuthor, #commentAuthor {
   padding: 2px 2px 2px 10px;
   font-weight: normal;
 }
-#postEdit {
+#commentEdit {
   width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
-#postTitle {
+#commentTitle {
   display: inline-block;
   font-size: 16px;
 }
-#postContent {
-  font-size: 14px; 
+#commentContent {
+  /*font-size: 14px; */
 }
-#postAuthor {
+#commentAuthor {
   display: inline-block;
-  /*font-size: 14px;*/
+  font-size: 12px;
 }
 
 #error {

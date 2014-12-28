@@ -53,12 +53,18 @@ li {
 
 form {
   display: inline;
-
+  text-align: center;
+}
+section {
+  text-align: center;
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 input, textarea {
-  display: inline-block;
-  width: 400px;
-  margin: 5px;
+  width: 100%;
+  margin: 5px auto 5px auto;
   padding: 6px;
   outline: none;
   border-radius: 6px;

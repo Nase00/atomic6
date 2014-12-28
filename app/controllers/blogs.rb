@@ -22,20 +22,21 @@ delete '/blogs/all' do # Probably not RESTful, come back to this
 	redirect :'blogs'
 end
 
-delete '/blogs/:id' do
-	Blog.destroy(params[:id])
+delete '/blogs/:blog_id' do
+	Blog.destroy(params[:blog_id])
+	Comment.destroy_all(blog_id: params[:blog_id])
 	redirect :'/blogs'
 end
 
-get '/blogs/:id' do
+get '/blogs/:blog_id' do
   erb :'blogs/show'
 end
 
-get '/blogs/:id/edit' do
+get '/blogs/:blog_id/edit' do
 	erb :'blogs/edit'
 end
 
-put '/blogs/:id' do
+put '/blogs/:blog_id' do
   current_blog.update(title: params[:title], description: params[:description], content: params[:content])
   redirect :"/blogs/#{current_blog.id}"
 end
