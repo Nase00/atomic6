@@ -22,14 +22,17 @@ header > nav > a {
 }
 
 header > nav > a:hover {
-  vertical-align: middle;
   background: linear-gradient(0deg, #acd4e5, #f2f2f2);
 }
 
 header > nav > a:active {
-  vertical-align: middle;
   background: linear-gradient(0deg, #b5d6e2, #f2f2f2);
   text-shadow: 0 0 0 #b2b2b2, 0 0 0 #b2b2b2, 0 0 0 #b2b2b2, 0 0 0 #b2b2b2, 0 0 4px #7f7f7f;
+}
+header > nav > a:hover, header > nav > a:active  {
+  text-decoration: none;
+  vertical-align: middle;
+  color: #FFFFFF;
 }
 
 nav {
