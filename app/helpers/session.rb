@@ -11,12 +11,23 @@ helpers do
     logged_in_user_id.present?
   end
 
-	def privilaged # Determines element visibility based on user status
+	def privilaged(model) # Determines element visibility based on user status
 		if logged_in?
-			authored || logged_in_user.is_admin
+			owner_of?(model) || logged_in_user.is_admin
 		else
 			false
 		end
+	end
+
+  def owner_of?(model) # Validates if the user created the blog or comment they are viewing
+  		case model
+			when Blog
+				model.author.id == logged_in_user.id
+			when Comment
+				model.commenter.id == logged_in_user.id
+			else
+				false
+			end
 	end
 
 	def password_matcher

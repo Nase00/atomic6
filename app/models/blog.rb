@@ -6,6 +6,10 @@ class Blog < ActiveRecord::Base
   has_many :comments
 
   def first(number)
-  	self.content[0..number] + "..."
+  	if self.content.length > number
+	  	self.content[0..number] + "..."
+	  else
+	  	self.content
+	  end
   end
 end

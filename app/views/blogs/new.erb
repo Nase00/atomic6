@@ -23,9 +23,7 @@
 		    <form action='/blogs' method='GET'>
 			    <input class="button1" type="submit" value="CANCEL">
 		    </form>
-		    <% if @error %>
-			    <p id="error"><%= @error %></p>
-		    <% end %>
+			  <p id="error"><%= error_message %></p>
 		</form>
 	</section>
 </div>

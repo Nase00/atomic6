@@ -24,7 +24,7 @@
 		<% else %>
 			<span align='right'><a id='right' href="/login">Login to leave a comment</a></span>
 		<% end %>
-	  <% if privilaged %>
+	  <% if privilaged(current_blog) %>
 			<form action='/blogs/<%= current_blog.id %>/edit' method='GET'>
 				<input class="buttonSmall" type="submit" value="Edit">
 			</form> 
@@ -89,7 +89,7 @@
 		  <h2 id="commentTitle"><%= comment.title %></h2>
 		  <div id="commentContent"><%= markdown(comment.content) %></div>
 		  <h5 id="commentAuthor">Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %></h5>
-		  <% if privilaged %>
+		  <% if privilaged(comment) %>
 		  	<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>/edit' method='GET'>
 					<input class="buttonExtraSmall" type="submit" value="Edit">
 				</form> 

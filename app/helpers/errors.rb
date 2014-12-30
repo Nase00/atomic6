@@ -16,4 +16,8 @@ helpers do
 			false
 		end
 	end
+
+	def error_message
+		params.keys.first.sub(/Validation failed: /, '') if params.keys.first
+	end
 end

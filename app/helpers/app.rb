@@ -23,12 +23,6 @@ helpers do
 		Comment.find(params[:comment_id])
 	end
 
-  def authored # Validates if the user created the blog they are viewing
-  	if params[:id]
-  		current_blog.author.id == logged_in_user.id || current_comment.commenter.id == logged_in_user.id
-  	end
-	end
-
   def latest_blogs # Queries latest 5 blog entries by admin
     Blog.where(author_id: 1).last(5).reverse
   end

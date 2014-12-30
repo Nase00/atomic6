@@ -4,7 +4,6 @@ get '/blogs' do
 end
 
 get '/blogs/new' do
-  @error = params.keys.first.sub(/Validation failed: /, '') if @error
 	erb :'blogs/new'
 end
 

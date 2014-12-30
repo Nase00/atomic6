@@ -1,6 +1,6 @@
 <div id="wrapper">
 	<section>
-		<% if authored %>
+		<% if owner_of?(current_comment) %>
 		  <h3>Edit your comment</h3>
 	  <% else %>
 	  	<h3>Edit <%= current_comment.commenter.name %>'s comment</h3>
