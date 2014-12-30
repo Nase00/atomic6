@@ -1,7 +1,7 @@
 <div id="wrapper">
 	<% if not index %>
 		<form action='/blogs' method='GET'>
-			<input type='submit' class='button1' value='Back to Index'>
+			<input type='submit' class='button1' value='Return to Index'>
 		</form>
 	<% end %>
 	<% if logged_in? %>
@@ -9,7 +9,7 @@
 			<input type='submit' class='button1' value='New Blog'>
 		</form>
 		<% if logged_in_user.is_admin %>
-			<input type='submit' class='deleteBlogs button1' value='Remove Blogs'>
+			<input type='submit' id='deleteBlogs' class='button1' value='Remove Blogs'>
 			<!-- Start delete all form --><form action='/blogs/all' method='POST'>
 				<input type="hidden" name="_method" value="DELETE" />
 				<input type='submit' class='toggle button1' value='Delete Selected'>
@@ -23,13 +23,13 @@
 	<!-- I'll come back to this and implement pagination -->
   <% @blogs.each do |blog| %>
     <div class="content">
-      <h2 id="blogTitle">
+      <h2>
     		<input name="selected_blog[<%= blog.id %>]" class="toggle checkbox" type="checkbox">
       	<a href='blogs/<%= blog.id %>'><%= blog.title %></a>
       </h2>
-      <h3 id="blogDesc"><%= blog.description %></h3>
-      <div id="blogContent"><p><%= markdown(blog.first(500)) %></p></div>
-      <h5 id="blogAuthor">
+      <h3><%= blog.description %></h3>
+      <p><%= markdown(blog.first(500)) %></p>
+      <h5>
 	      Authored by <a href="/users/<%= blog.author.id %>"><%= blog.author.name %></a> <%= time(blog) %>
       </h5>
     </div>

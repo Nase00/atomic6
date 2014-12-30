@@ -1,23 +1,22 @@
 <div id='wrapper'>
-	<section>
-		<h2>Registered Users</h2>
+		<h1>Registered Users</h1>
 		<table>
 			<tr>
-				<td><h4>Name</h4></td><td><h4>Email</h4></td><td><h4>Twitter</h4></td>
+				<td><h2>Name</h2></td><td><h2>Email</h2></td><td><h2>Twitter</h2></td><td><h2>Registered</h2>
 			</tr>
 			<% @users.each do |user| %>
 				<tr>
-					<td>
+					<th>
 						<% if user.is_admin %>
-							<h5><span id='admin'><a href='users/<%= user.id %>'><%= user.name %></a></span></h5>
+							<h3 id="admin"><a href='users/<%= user.id %>'><%= user.name %></a></h3>
 						<% else %>
-							<h5><a href='users/<%= user.id %>'><%= user.name %></a></h5>
+							<h3><a href='users/<%= user.id %>'><%= user.name %></a></h3>
 						<% end %>
-					</td>
+					</th>
 					<td><%= user.email %></td>
 					<td><%= user.twitter %></td>
+					<td><%= time(user) %></td>
 				</tr>
 			<% end %>
 		</table>
-	</section>
 </div>

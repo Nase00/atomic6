@@ -31,6 +31,7 @@ delete '/blogs/:blog_id' do
 end
 
 get '/blogs/:blog_id' do
+	@comments = current_blog.comments.reverse
   erb :'blogs/show'
 end
 

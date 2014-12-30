@@ -30,8 +30,8 @@ $(document).ready(function() {
      return(false);
   }
 
-  Toggle($('.deleteBlogs'), $('.toggle'))
-  Toggle($('.makeComment'), $('.toggleMakeComment'))
+  Toggle($('#deleteBlogs'), $('.toggle'))
+  Toggle($('#makeComment'), $('.toggleMakeComment'))
 
   if (query_string('display_comments')) {
     CommentToggleBar($('.commentsToggle'))
@@ -62,9 +62,9 @@ $(document).ready(function() {
       if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
         CommentToggleBar($('.commentsToggle'))
       }
-      $('.newContent').show()
-      $('.newCommentTitle').append(response.title)
-      $('.newCommentContent').append(response.content)
+      $('#newContent').show()
+      $('#newCommentTitle').append(response.title)
+      $('#newCommentContent').append(response.content)
       $("#editForm").attr("action", commentRoute + "/edit")
       $("#deleteForm").attr("action", commentRoute);
     });

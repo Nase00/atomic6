@@ -1,38 +1,24 @@
 <div id="wrapper">
 	<section>
-		<h2>Profile - <%= @user.name %></h2>
+		<h1>Profile - <%= @user.name %></h1>
 	  <h3>Edit your details</h3>
+	  <div id="center">
+
 	  <form action='/users/<%= @user.id %>' method='POST'>
-	  	<table>
-		  	<tr><td><input type="text" value='<%= @user.name %>' name="name" placeholder="name"></td></tr>
-		    <tr><td><input type="text" value='<%= @user.email %>' name="email" placeholder="email"></td></tr>
-		    <tr><td><input type="text" value='<%= @user.twitter %>' name="twitter" placeholder="Twitter"></td></tr>
-		    <tr><td><input type="password" name="password" placeholder="Confirm password to change details"></td></tr>
-		    <tr><td>
-		    	<input type="hidden" name="_method" value="put" />
-	    	</td></tr>
-		    <tr>
-			    <td>
-				    <input class="button1" type="submit" value="SUBMIT"></form>
-				    <form action='/users/<%= @user.id %>' method='GET'>
-					    <input class="button1" type="submit" value="CANCEL">
-				    </form>
-			    </td>
-		    </tr>
-	      <% if incorrect_password %>
-					<tr>
-						<td>
-							<div id="center"><span id='error'>Incorrect password, please try again.</span></div>
-						</td>
-					</tr>
-				<% end %>
-	  	  <tr>
-		  	  <td>
-			  	  <form action='/users/password' method='GET'>
-			    		<input class="button2" type="submit" value="CHANGE PASSWORD">
-		    		</form>
-	    		</td>
-    		</tr>
-	    </table>
+	  	<input type="text" value='<%= @user.name %>' name="name" placeholder="name" />
+	  	<input type="text" value='<%= @user.email %>' name="email" placeholder="email" />
+	  	<input type="text" value='<%= @user.twitter %>' name="twitter" placeholder="Twitter" />
+	  	<input type="password" name="password" placeholder="Confirm password to change details">
+    	<input type="hidden" name="_method" value="put" />
+	    <input class="button1" type="submit" value="SUBMIT"></form>
+	    <form action='/users/<%= @user.id %>' method='GET'>
+		    <input class="button1" type="submit" value="CANCEL">
+	    </form>
+      <% if incorrect_password %>
+				<span id='error'>Incorrect password, please try again.</span>
+			<% end %>
+  	  <form action='/users/password' method='GET'>
+    		<input class="button2" type="submit" value="CHANGE PASSWORD">
+  		</form>
   </section>
 </div>

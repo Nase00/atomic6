@@ -5,11 +5,11 @@
 	<h1><%= @page_title %></h1>
   <% @comments.each do |comment| %>
     <div class="content">
-      <h2 id="commentTitle">
+      <h2>
       	<a href='comments/<%= comment.id %>'><%= comment.title %></a>
       </h2>
-      <div id="blogContent"><p><%= markdown(comment.content) %></p></div>
-      <h5 id="commentAuthor">
+      <p><%= markdown(comment.content) %></p>
+      <h5>
       Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
       </h5>
     </div>

@@ -27,14 +27,6 @@ html {
   height: 14px;
 }
 
-.content, .newContent {
-  margin: 0;
-  padding: 4px;
-}
-.newContent {
-  display: none;
-}
-
 table {
   margin: 10px;
   border-radius: 10px;
@@ -80,7 +72,12 @@ input, textarea {
 #center {
   margin: 0 auto auto;
   width: 400px;
+  text-align: center;
 }
+#right {
+  float: right;
+}
+
 .toggle {
   display: none;
 }
@@ -91,6 +88,13 @@ input, textarea {
   height: 20px;
   width: 20px;
 }
+#newContent {
+  margin: 0;
+  padding: 4px;
+}
+#newContent {
+  display: none;
+}
 
 .button1, .button2, .buttonSmall, .buttonExtraSmall, .buttonWide {
   margin: 4px 0 4px 0;
@@ -100,14 +104,18 @@ input, textarea {
   background-color: #192a33;
 }
 .button1:hover, .button2:hover, .buttonSmall:hover, .buttonExtraSmall:hover, .buttonWide:hover {
-  background: #263f4c;
+  background: #00547f;
 }
 .button1:active, .button2:active, .buttonSmall:active, .buttonExtraSmall:active, .buttonWide:active {
-  background: #335566;
+  background: #0087cc;
 }
 .button1 {
   font-size: 16px;
-  width: 194px;
+  width: 196px;
+}
+.button2 {
+  font-size: 16px;
+  width: 396px;
 }
 .buttonSmall, .buttonExtraSmall, .buttonWide {
   margin: 2px 2px 2px 2px;

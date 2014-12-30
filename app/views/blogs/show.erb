@@ -10,10 +10,10 @@
 </div>
 
 <div id="wrapper">
-	<h1 id="blogTitle"><%= current_blog.title %></h1>
-	<h3 id="blogDesc"><%= current_blog.description %></h3>
-  <div id="blogContent"><p><%= markdown(current_blog.content) %></p></div>
-	<h5 id="blogAuthor">
+	<h1><%= current_blog.title %></h1>
+	<h3><%= current_blog.description %></h3>
+  <p><%= markdown(current_blog.content) %></p>
+	<h5>
 		Authored by <a href="/users/<%= current_blog.author.id %>"><%= current_blog.author.name %></a> <%= time(current_blog) %>
 	</h5>
   <div id="optionsWrapper">
@@ -22,7 +22,7 @@
 			  <input class="buttonSmall makeComment" type="submit" value="Comment">
 		  </form>
 		<% else %>
-			<span align='right'><a id='right' href="/login">Login to leave a comment</a></span>
+			<h5><a id='right' href="/login">Login to leave a comment</a></h5>
 		<% end %>
 	  <% if privilaged(current_blog) %>
 			<form action='/blogs/<%= current_blog.id %>/edit' method='GET'>
@@ -39,38 +39,34 @@
 
 <div id="wrapper" class="toggleMakeComment">
 	<section>
-		<h3>Submit Comment</h3>
-		<form id='commentForm' action='/blogs/<%= current_blog.id %>' method='POST'>
-			<table id="commentEdit">
-				<tr>
-					<td><input id='commentTitle' name='title' type='text' placeholder='title'></td>
-				</tr>
-				<tr>
-					<td>
-						<textarea id='commentContent' name='content' rows="2" cols="20" type='text' placeholder='content'></textarea>
-						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
-					</td>
-				</tr>
-			</table>
-			<input dir='<%= current_blog.id %>' id='submitComment' class="button1" type="submit" value="SUBMIT"></form>
+		<h1>Submit Comment</h1>
+		<div id="center">
+			<form id='commentForm' action='/blogs/<%= current_blog.id %>' method='POST'>
+				<input id='commentTitle' name='title' type='text' placeholder='title'></td>
+				<textarea id='commentContent' name='content' rows="2" cols="20" type='text' placeholder='content'></textarea>
+				<h5>
+					<a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a>
+				</h5>
+				<input dir='<%= current_blog.id %>' id='submitComment' class="button1" type="submit" value="SUBMIT">
+			</form>
 	    <form action='/blogs' method='GET'>
-		    <input class="button1 makeComment" type="submit" value="CANCEL">
+		    <input id="makeComment" class="button1" type="submit" value="CANCEL">
 	    </form>
 	    <% if @error %>
 		    <p id="error"><%= @error %></p>
 	    <% end %>
-		</form>
+		</div>
 	</section>
 </div>
 
 <div id="wrapper" class="toggle">
-	<h2>Comments</h2>
+	<h1>Comments</h1>
 	<!-- BEGIN spoofed ajax comment -->
 	<% if logged_in? %>
-		<div class="newContent">
-		  <h2 id="commentTitle" class="newCommentTitle"></h2>
-		  <div id="commentContent" class="newCommentContent"></div>
-		  <h5 id="commentAuthor">
+		<div id="newContent">
+		  <h3 id="newCommentTitle"></h3>
+		  <div id="newCommentContent"></div>
+		  <h5>
 			  Posted by <a href='/users/<%= logged_in_user.id %>'><%= logged_in_user.name %></a> <i>just now</i>
 		  </h5>
 	  	<form id="editForm" action='' method='GET'>
@@ -87,11 +83,13 @@
   <% if current_blog.comments.length == 0 %>
 	  <div id="noComments">No comments</div>
   <% end %>
-  <% comments(current_blog).each do |comment| %>
+  <% @comments.each do |comment| %>
 	  <div class="content">
-		  <h2 id="commentTitle"><%= comment.title %></h2>
-		  <div id="commentContent"><%= markdown(comment.content) %></div>
-		  <h5 id="commentAuthor">Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %></h5>
+		  <h3><%= comment.title %></h3>
+		  <%= markdown(comment.content) %>
+		  <h5>
+		  	Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
+		  </h5>
 		  <% if privilaged(comment) %>
 		  	<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>/edit' method='GET'>
 					<input class="buttonExtraSmall" type="submit" value="Edit">

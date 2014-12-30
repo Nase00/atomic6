@@ -3,15 +3,16 @@ helpers do
 		@page_title.match(/All./)
 	end
 
-	def comments(model)
-		model.comments.reverse
-	end
-
 	def time(model)
-		if model.created_at == model.updated_at
-			model.created_at.strftime("on %m/%d/%Y at %I:%M%p")
-		else
-			model.created_at.strftime("on %m/%d/%Y at %I:%M%p") + model.updated_at.strftime(" and edited on %m/%d/%Y at %I:%M%p")
+		case model
+		when User
+			model.created_at.strftime("%m/%d/%Y")
+		when Blog || Comment
+			if model.created_at == model.updated_at
+				model.created_at.strftime("on %m/%d/%Y at %I:%M%p")
+			else
+				model.created_at.strftime("on %m/%d/%Y at %I:%M%p") + model.updated_at.strftime(" and edited on %m/%d/%Y at %I:%M%p")
+			end
 		end
 	end
 
