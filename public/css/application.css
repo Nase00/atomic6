@@ -38,16 +38,17 @@ html {
 table {
   margin: 10px;
   border-radius: 10px;
+  text-align: left;
   /*background-color: rgba(200,200,200,0.5);*/
   /*box-shadow: 0px 0px 0px 1px rgba(100,100,100,0.5); */
 }
-th, td {
+tr, th, td {
   padding: 4px 12px 4px 12px;
-  vertical-align: text-top;
+  vertical-align: top;
   text-align: left;
   border-radius: 10px;
 }
-td {
+td#form {
   width: 100%;
 }
 
@@ -75,6 +76,10 @@ input, textarea {
   outline: none;
   border-radius: 6px;
   border: 0;
+}
+#center {
+  margin: 0 auto auto;
+  width: 400px;
 }
 .toggle {
   display: none;

@@ -1,9 +1,6 @@
 header {
   margin: 0 auto auto;
   height: 80px;
-  width: 60%;
-  min-width: 600px;
-  max-width: 800px;
   background: #7f7f7f;
   border-radius: 10px;
   border: 2px solid #999999;
@@ -36,16 +33,22 @@ header > nav > a:active {
 }
 
 nav {
-  position: absolute;
+  /*position: absolute;*/
   margin: 0 auto auto;
   padding: 22px;
-  right: 12%;
+  text-align: right;
+}
+
+#headerWrapper {
+  margin: 15px auto auto;
+  width: 60%;
+  min-width: 600px;
+  max-width: 800px;
 }
 
 #session, #session > a {
   margin: 0 auto auto;
   padding: 4px;
-  width: 75%;
   font-size: 10px;
   text-align: right;
   color: #FFFFFF;
@@ -58,4 +61,9 @@ nav {
 #logo {
   float: left;
   border: 0;
+  opacity: 1;
+   transition: opacity .25s ease-in-out;
+}
+#logo:hover {
+  opacity: 0.8;
 }

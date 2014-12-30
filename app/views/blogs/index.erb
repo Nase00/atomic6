@@ -1,4 +1,9 @@
 <div id="wrapper">
+	<% if not index %>
+		<form action='/blogs' method='GET'>
+			<input type='submit' class='button1' value='Back to Index'>
+		</form>
+	<% end %>
 	<% if logged_in? %>
 		<form action='blogs/new' method='GET'>
 			<input type='submit' class='button1' value='New Blog'>
@@ -14,7 +19,7 @@
 	<% end %>
 </div>
 <div id="wrapper">
-	<h1>All Blogs</h1>
+	<h1><%= @page_title %></h1>
 	<!-- I'll come back to this and implement pagination -->
   <% @blogs.each do |blog| %>
     <div class="content">

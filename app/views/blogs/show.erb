@@ -73,10 +73,10 @@
 		  <h5 id="commentAuthor">
 			  Posted by <a href='/users/<%= logged_in_user.id %>'><%= logged_in_user.name %></a> <i>just now</i>
 		  </h5>
-	  	<form action='' method='GET'>
+	  	<form id="editForm" action='' method='GET'>
 				<input class="buttonExtraSmall" type="submit" value="Edit">
 			</form> 
-			<form action='' method='POST'>
+			<form id="deleteForm" action='' method='POST'>
 	  		<input type="hidden" name="_method" value="DELETE" />
 	  		<input class="buttonExtraSmall" type="submit" value="Delete">
 			</form>
@@ -84,6 +84,9 @@
   <% end %>
   <!-- END spoofed ajax comment -->
   <!-- BEGIN actual comments -->
+  <% if current_blog.comments.length == 0 %>
+	  <div id="noComments">No comments</div>
+  <% end %>
   <% comments(current_blog).each do |comment| %>
 	  <div class="content">
 		  <h2 id="commentTitle"><%= comment.title %></h2>

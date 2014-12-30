@@ -15,11 +15,22 @@ delete '/blogs/:blog_id/comments/:comment_id' do
 end
 
 get '/blogs/:blog_id/comments/:comment_id/edit' do
-	@comment = params[:commenter_id]
+	@comment = Hash.new
 	erb :'/blogs/comments/edit'
 end
 
 put '/blogs/:blog_id/comments/:comment_id' do
-  current_comment.update(title: params[:title], content: params[:content])
-  redirect :"/blogs/#{current_blog.id}?display_comments=true"
+	if catch_errors(current_comment, params[:editComment], "update") === true
+	  redirect :"/blogs/#{current_blog.id}?display_comments=true"
+	else
+		@comment = params[:editComment]
+		@error_message = catch_errors(current_blog, params[:editComment], "update")
+		erb :"/blogs/comments/edit"
+	end
+end
+
+get '/blogs/comments/by_user/:user_id' do
+	@page_title = "Comments by " + User.find(params[:user_id]).name
+	@comments = Comment.where(commenter_id: params[:user_id])
+	erb :'/blogs/comments/index'
 end

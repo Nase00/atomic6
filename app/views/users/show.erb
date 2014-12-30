@@ -1,0 +1,24 @@
+<div id='wrapper'>
+	<h2>Profile</h2>
+	<table>
+		<tr>
+			<th>Name</th><th>Email</th><th>Twitter</th>
+		</tr>
+		<tr>
+			<th><%= @user.name %></th>
+			<td><%= @user.email %></td>
+			<td><%= @user.twitter %></td>
+		</tr>
+		<tr>
+			<td><a href='/blogs/by_user/<%= @user.id %>'><%= @user.blogs.length %> Blogs</a></td>
+			<td><a href='/blogs/comments/by_user/<%= @user.id %>'><%= @user.comments.length %> Comments</a></td>
+		</tr>
+	</table>
+	<% if logged_in_user.is_admin || @user.id == logged_in_user.id %>
+		<div id="optionsWrapper">
+			<form action='/users/<%= logged_in_user.id %>/edit' method='GET'>
+				<input class='buttonSmall' type='submit' value='Edit Profile'>
+			</form>
+		</div>
+	<% end %>
+</div>

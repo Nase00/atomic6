@@ -5,6 +5,8 @@ helpers do
 
   def logged_in_user
     User.find(logged_in_user_id)
+	rescue ActiveRecord::RecordNotFound
+		redirect :'/login?must_login=true'
   end
 
   def logged_in?
@@ -20,14 +22,14 @@ helpers do
 	end
 
   def owner_of?(model) # Validates if the user created the blog or comment they are viewing
-  		case model
-			when Blog
-				model.author.id == logged_in_user.id
-			when Comment
-				model.commenter.id == logged_in_user.id
-			else
-				false
-			end
+		case model
+		when Blog
+			model.author.id == logged_in_user.id
+		when Comment
+			model.commenter.id == logged_in_user.id
+		else
+			false
+		end
 	end
 
 	def password_matcher

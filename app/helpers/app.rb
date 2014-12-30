@@ -1,6 +1,6 @@
 helpers do
-	def blogs
-		Blog.all.reverse
+	def index
+		@page_title.match(/All./)
 	end
 
 	def comments(model)

@@ -7,17 +7,34 @@ helpers do
 		params["mismatch"] == "true"
 	end
 
-	def catch_errors(model)
-	  model.save!
+	def catch_errors(model, params=nil, state="save")
+		case state
+		when "save"
+		  model.save!
+		when "update"
+			model.update!(params)
+		end
 	rescue ActiveRecord::RecordInvalid => error
 		if error.message
-			error.message
+			error.message.sub(/Validation failed: /, '')
 		else
 			false
 		end
 	end
 
-	def error_message
-		params.keys.first.sub(/Validation failed: /, '') if params.keys.first
-	end
+	# def catch_update_errors(model)
+  #  	model.update!()
+	# rescue ActiveRecord::RecordInvalid => error
+	# 	if error.message
+	# 		error.message
+	# 	else
+	# 		false
+	# 	end
+	# end
+
+	# def error_message
+	# 	if params.keys.first
+	# 		params.keys.first.sub(/Validation failed: /, '')
+	# 	end
+	# end
 end

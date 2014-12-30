@@ -24,7 +24,7 @@ end
 get '/users/:id' do
 	if logged_in?
 		@user = User.find(params[:id])
-	  erb :'users/profile'
+	  erb :'users/show'
 	else
 		redirect '/login?must_login=true'
 	end

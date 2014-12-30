@@ -43,25 +43,30 @@ $(document).ready(function() {
 
   $('#submitComment').click(function(e) {
     e.preventDefault()
-    var url = ("/blogs/" + $(e.currentTarget).attr("dir") + "/comments");
+    var blogId = $(e.currentTarget).attr("dir")
+    var url = ("/blogs/" + blogId + "/comments");
     console.log(url);
     var request = $.ajax({
-      url: "/blogs/" + $(e.currentTarget).attr("dir") + "/comments",
+      url: "/blogs/" + blogId + "/comments",
       method: "post",
       dataType: "json",
       data: $("#commentForm").serialize()
     })
 
     $('.toggleMakeComment').slideToggle(50)
-
+    $('#noComments').fadeToggle(50)
 
     request.done(function(response){
+      var commentRoute = "/blogs/" + blogId + "/comments/" + response.id
+
       if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
         CommentToggleBar($('.commentsToggle'))
       }
       $('.newContent').show()
       $('.newCommentTitle').append(response.title)
       $('.newCommentContent').append(response.content)
+      $("#editForm").attr("action", commentRoute + "/edit")
+      $("#deleteForm").attr("action", commentRoute);
     });
   })
 });

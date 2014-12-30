@@ -9,12 +9,12 @@
 			<table id="blogEdit">
 				<tr>
 					<th>Title</th>
-					<td><input id='blogTitle' name='title' type='text' value='<%= current_comment.title %>'></td>
+					<td id="form"><input id='blogTitle' name='editComment[title]' type='text' value='<%= @comment[:title] || current_comment.title %>'></td>
 				</tr>
 				<tr>
 					<th>Content</th>
-					<td>
-						<textarea name='content' rows="10" cols="30" id='blogContent' type='text' value='<%= current_comment.content %>'><%= current_comment.content %></textarea>
+					<td id="form">
+						<textarea name='editComment[content]' rows="10" cols="30" id='blogContent' type='text' value='current_comment.content'><%= @comment[:content] || current_comment.content %></textarea>
 						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
 					</td>
 				</tr>
@@ -24,6 +24,7 @@
 		    <form action='/blogs/<%= current_blog.id %>' method='GET'>
 			    <input class="button1" type="submit" value="CANCEL">
 		    </form>
+		    <p id="error"><%= @error_message %></p>
 		</form>
 	</section>
 </div>

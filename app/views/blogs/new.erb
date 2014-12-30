@@ -2,19 +2,20 @@
 	<section>
 		<h2>New Blog</h2>
 		<form action='/blogs' method='POST'>
+		<input type="hidden" name="newBlog[author_id]" value="<%= logged_in_user.id %>" />
 			<table id="blogEdit">
 				<tr>
 					<th>Title</th>
-					<td><input id='blogTitle' name='title' type='text' placeholder='title'></td>
+					<td id="form"><input id='blogTitle' name='newBlog[title]' type='text' value='<%= @blog[:title] %>' placeholder='title'></td>
 				</tr>
 				<tr>
 					<th>Description</th>
-					<td><input id='blogDesc' name='description' type='text' placeholder='description (optional)'></td>
+					<td id="form"><input id='blogDesc' name='newBlog[description]' type='text' value='<%= @blog[:description] %>' placeholder='description (optional)'></td>
 				</tr>
 				<tr>
 					<th>Content</th>
-					<td>
-						<textarea name='content' rows="10" cols="30" id='blogContent' type='text' placeholder='content'></textarea>
+					<td id="form">
+						<textarea name='newBlog[content]' rows="10" cols="30" id='blogContent' type='text' placeholder='content'><%= @blog[:content] %></textarea>
 						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
 					</td>
 				</tr>
@@ -23,7 +24,7 @@
 		    <form action='/blogs' method='GET'>
 			    <input class="button1" type="submit" value="CANCEL">
 		    </form>
-			  <p id="error"><%= error_message %></p>
+			  <p id="error"><%= @error_message %></p>
 		</form>
 	</section>
 </div>

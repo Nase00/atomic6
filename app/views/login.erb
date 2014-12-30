@@ -2,19 +2,22 @@
   <section>
     <% if @login_error %>
       <p><span id="error">Login error</span></p>
-      <p>Wrong username or password</p>
+      <p id="error">Wrong username or password</p>
     <% elsif @no_user %>
-      <p>User not found</p>
+      <p id="error">User not found</p>
     <% elsif @must_login %>
-      <p>You must login to view that page</p>
+      <p id="error">You are not logged in</p>
     <% end %>
     <form action='/login' method='POST'>
+    <div id="center">
       <input type="text" name="email" placeholder="email">
       <input type="password" name="password" placeholder="password">
-      <input id="login" class="button1" type="submit" value="Submit">
+      <input class="button1" type="submit" value="Submit">
+      
     </form>
     <form action='/users/new' method='POST'>
       <input class="button1" type="submit" value="Register">
     </form>
+    </div>
   </section>
 </div>
