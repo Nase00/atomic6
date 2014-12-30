@@ -7,7 +7,7 @@ class Blog < ActiveRecord::Base
 
   def first(number)
   	if self.content.length > number
-	  	self.content[0..number] + "..."
+	  	self.content[0..number] + "<a href='/blogs/#{self.id}'>...<span id=\"clickForMore\">continue reading</span></a>"
 	  else
 	  	self.content
 	  end
