@@ -7,7 +7,7 @@ helpers do
 		case model
 		when User
 			model.created_at.strftime("%m/%d/%Y")
-		when Blog || Comment
+		when Blog, Comment
 			if model.created_at == model.updated_at
 				model.created_at.strftime("on %m/%d/%Y at %I:%M%p")
 			else
