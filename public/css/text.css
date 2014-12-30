@@ -8,18 +8,20 @@ h1, h2, h3, h4, h5 {
   margin: 0;
   color: #002A3F;
 }
-h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, #continueReading {
-  /*text-decoration: none;*/
+a, h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, #continueReading {
   color: #002A3F;
 }
-h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, #continueReading:hover {
+a:hover, h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, #continueReading:hover {
   color: #00547f;
 }
-h1 > a:active, h2 > a:active, h3 > a:active, h4 > a:active, h5 > a:active, #continueReading:active {
+a:active, h1 > a:active, h2 > a:active, h3 > a:active, h4 > a:active, h5 > a:active, #continueReading:active {
   color: #0087cc;
 }
-h1 > a, h2 > a, h3 > a {
+a, h1 > a, h2 > a, h3 > a {
   text-decoration: none;
+}
+a:hover, h1 > a:hover, h2 > a:hover, h3 > a:hover {
+  text-decoration: underline;
 }
 h3 {
   font-size: 16px;
