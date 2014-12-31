@@ -1,5 +1,13 @@
 /* Text-specific selectors */
 
+.content {
+  margin: 0 0 12px 0;
+}
+
+.content:nth-child(odd) {
+  background-color: rgba(229, 229, 229, 0.25);
+}
+
 #admin::after {
   content: "*";
 }
