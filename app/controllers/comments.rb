@@ -2,6 +2,10 @@ get '/blogs/:id/comments/new' do
   "You shouldn't be seeing this!"
 end
 
+get '/blogs/:blog_id/comments' do
+	redirect :"/blogs/#{params[:blog_id]}?display_comments=true"
+end
+
 post '/blogs/:blog_id/comments' do
 	comment = Comment.new(title: params[:title], content: params[:content], blog_id: current_blog.id, commenter_id: logged_in_user.id)
 	content_type :json
@@ -11,7 +15,7 @@ end
 
 delete '/blogs/:blog_id/comments/:comment_id' do
 	Comment.destroy(params[:comment_id])
-	redirect :"/blogs/#{params[:blog_id]}?display_comments=true"
+	redirect :"/blogs/#{params[:blog_id]}/comments"
 end
 
 get '/blogs/:blog_id/comments/:comment_id/edit' do
