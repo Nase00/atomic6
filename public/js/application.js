@@ -55,6 +55,8 @@ $(document).ready(function() {
 
     $('.toggleMakeComment').slideToggle(50)
     $('#noComments').fadeToggle(50)
+    $('#makeComment').val("Refresh")
+    $('#makeComment').unbind()
 
     request.done(function(response){
       var commentRoute = "/blogs/" + blogId + "/comments/" + response.id

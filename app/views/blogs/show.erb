@@ -18,7 +18,7 @@
 	</h5>
   <div id="optionsWrapper">
 	  <% if logged_in? %>
-		  <form action="/blogs/<%= current_blog.id %>/comments/new" method='GET'>
+		  <form action="/blogs/<%= current_blog.id %>" method='GET'>
 			  <input id="makeComment" class="buttonSmall" type="submit" value="Comment">
 		  </form>
 		<% else %>
