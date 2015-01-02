@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :galleries
 
   def password=(password)
-    self.hashed_password = BCrypt::Password.create(password) if password.length > 6
+    self.hashed_password = BCrypt::Password.create(password)
   end
 
   def password
