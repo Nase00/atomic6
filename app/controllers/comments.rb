@@ -25,7 +25,7 @@ end
 
 put '/blogs/:blog_id/comments/:comment_id' do
 	if catch_errors(current_comment, params[:editComment], "update") === true
-	  redirect :"/blogs/#{current_blog.id}?display_comments=true"
+	  redirect :"/blogs/#{current_blog.id}/comments"
 	else
 		@comment = params[:editComment]
 		@error_message = catch_errors(current_blog, params[:editComment], "update")
