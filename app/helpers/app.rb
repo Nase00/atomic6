@@ -28,8 +28,8 @@ helpers do
     Blog.where(author_id: 1).last(5).reverse
   end
 
-  def no_comments
-  	current_blog.comments.length == 0
+  def comments_exist
+  	current_blog.comments.length != 0
   end
 
 	def markdown(content)

@@ -53,6 +53,6 @@ end
 
 get '/blogs/by_user/:user_id' do
 	@page_title = "Blogs by " + User.find(params[:user_id]).name
-  @blogs = Blog.where(author_id: params[:user_id])
+  @blogs = Blog.where(author_id: params[:user_id]).reverse # There has to be a better way
   erb :'blogs/index'
 end
