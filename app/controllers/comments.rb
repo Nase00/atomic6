@@ -6,6 +6,10 @@ get '/blogs/:blog_id/comments' do
 	redirect :"/blogs/#{params[:blog_id]}?display_comments=true"
 end
 
+get '/blogs/:blog_id/comments/:comment_id' do
+	redirect :"/blogs/#{params[:blog_id]}?display_comments=true#comment_#{params[:comment_id]}"
+end
+
 post '/blogs/:blog_id/comments' do
 	comment = Comment.new(title: params[:title], content: params[:content], blog_id: current_blog.id, commenter_id: logged_in_user.id)
 	content_type :json
