@@ -1,4 +1,5 @@
 # be rake db:drop && be rake db:create && be rake db:migrate && be rake db:seed
+# heroku run db:drop
 module Seed
   def self.run
     User.create!(name: "Sean", email: "nase00@gmail.com", twitter: "@NaseZero", password: "test", is_admin: true)
@@ -13,7 +14,7 @@ module Seed
       Blog.create(title: title, description: description, content: content, author_id: author_id)
     end
 
-    200.times do # Seed comments
+    100.times do # Seed comments
       title = Faker::Lorem.word
       content = Faker::Lorem.sentence(50)
       blog_id = rand(1..20)
