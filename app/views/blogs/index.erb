@@ -25,7 +25,7 @@
     <div class="content">
       <h2>
     		<input name="selected_blog[<%= blog.id %>]" class="toggle checkbox" type="checkbox">
-      	<a href='blogs/<%= blog.id %>'><%= blog.title %></a>
+      	<a href='/blogs/<%= blog.id %>'><%= blog.title %></a>
       </h2>
       <h3><%= blog.description %></h3>
       <p><%= markdown(blog.first(500)) %></p>
