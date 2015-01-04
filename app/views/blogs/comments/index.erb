@@ -10,7 +10,7 @@
       </h3>
       <p><%= markdown(comment.content) %></p>
       <h5>
-        Posted to <a href="/blogs/<%= comment.blog.id %>"><%= comment.blog.title %></a> by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
+        Posted to <a href="/blogs/<%= comment.blog_id %>"><%= comment.blog.title %></a> by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
       </h5>
     </div>
   <% end %>

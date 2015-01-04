@@ -19,7 +19,7 @@ delete '/blogs/:blog_id/comments/:comment_id' do
 end
 
 get '/blogs/:blog_id/comments/:comment_id/edit' do
-	@comment = Hash.new
+	@comment = Hash.new # Prevents ugly nil error
 	erb :'/blogs/comments/edit'
 end
 

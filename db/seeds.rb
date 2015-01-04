@@ -16,7 +16,7 @@ module Seed
     200.times do # Seed comments
       title = Faker::Lorem.word
       content = Faker::Lorem.sentence(50)
-      blog_id = rand(1..25)
+      blog_id = rand(1..20)
       commenter_id = rand(1..3)
       Comment.create(title: title, content: content, blog_id: blog_id, commenter_id: commenter_id)
     end

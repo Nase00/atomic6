@@ -5,7 +5,7 @@ get '/blogs' do
 end
 
 get '/blogs/new' do
-	@blog = Hash.new
+	@blog = Hash.new # Prevents ugly nil error
 	erb :'blogs/new'
 end
 
