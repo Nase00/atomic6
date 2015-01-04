@@ -50,4 +50,4 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
-ActiveRecord::Base.default_timezone = :local
+# ActiveRecord::Base.default_timezone = :utc

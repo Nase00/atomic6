@@ -20,11 +20,12 @@
 				</tr>
 			</table>
 			<input type="hidden" name="_method" value="PUT" />
-			<input class="button1 btn" type="submit" value="SUBMIT"></form>
-		    <form action='/blogs/<%= current_blog.id %>' method='GET'>
-			    <input class="button1" type="submit" value="CANCEL">
-		    </form>
-		    <p id="error"><%= @error_message %></p>
+			<input class="button1 btn" type="submit" value="SUBMIT">
+		</form>
+	    <form action='/blogs/<%= current_blog.id %>/comments' method='GET'>
+		    <input class="button1" type="submit" value="CANCEL">
+	    </form>
+	    <p id="error"><%= @error_message %></p>
 		</form>
 	</section>
 </div>
