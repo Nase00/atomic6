@@ -32,7 +32,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="305" y="123" name="users">
+</datatypes><table x="310" y="220" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -48,14 +48,14 @@
 <row name="password" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
-<row name="admin" null="1" autoincrement="0">
+<row name="is_admin" null="1" autoincrement="0">
 <datatype>BINARY</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="441" y="97" name="blogs">
+<table x="616" y="205" name="blogs">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -76,7 +76,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="171" y="139" name="gallery">
+<table x="176" y="154" name="gallery">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -94,7 +94,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="565" y="61" name="posts">
+<table x="456" y="91" name="comments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -108,11 +108,15 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="blogs" row="id" />
 </row>
+<row name="commenter_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="33" y="181" name="project">
+<table x="42" y="88" name="project">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
