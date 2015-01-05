@@ -8,7 +8,7 @@ end
 
 post '/login' do
   @user = User.find_by(email: params[:email])
-  if @user && @user.password == params[:password]
+  if @user && @user.authenticate(params[:password])
     session[:logged_in_user_id] = @user.id
     redirect :'/'
   elsif @user.nil?

@@ -9,16 +9,27 @@ get '/users/password' do
 end
 
 post '/users/password' do
-	if password_matcher
-		if logged_in_user.authenticate(params[:oldPassword])
-			logged_in_user.update(password: params[:newPassword])
+	if logged_in_user.authenticate(params[:old_password])
+		logged_in_user.password = BCrypt::Password.create(params[:new_password])
+		logged_in_user.password_confirmation = BCrypt::Password.create(params[:new_password_confirmation])
+		if logged_in_user.update!(password: BCrypt::Password.create(params[:password]))
 			redirect :"users/#{logged_in_user.id}"
 		else
-			redirect :"users/password?incorrect_password=true"
+			redirect :"users/password?mismatch=true"
 		end
 	else
-		redirect :"users/password?mismatch=true"
+		redirect :"users/password?incorrect_password=true"
 	end
+	# if password_matcher
+	# 	if logged_in_user.authenticate(params[:oldPassword])
+	# 		logged_in_user.update(password: params[:newPassword])
+	# 		redirect :"users/#{logged_in_user.id}"
+	# 	else
+	# 		redirect :"users/password?incorrect_password=true"
+	# 	end
+	# else
+	# 	redirect :"users/password?mismatch=true"
+	# end
 end
 
 get '/users/:id' do

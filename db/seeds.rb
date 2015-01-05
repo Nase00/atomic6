@@ -2,9 +2,9 @@
 # heroku run db:drop
 module Seed
   def self.run
-    User.create!(name: "Sean", email: "nase00@gmail.com", twitter: "@NaseZero", password: "test", is_admin: true)
-    User.create!(name: "testUser1", email: "testUser1@whatever.com", twitter: "@testUser1", password: "test1", is_admin: false)
-    User.create!(name: "testUser2", email: "testUser2@whatever.com", twitter: "@testUser2", password: "test2", is_admin: false)
+    User.create!(name: "Sean", email: "nase00@gmail.com", twitter: "@NaseZero", password: "testtest", is_admin: true)
+    User.create!(name: "testUser1", email: "testUser1@whatever.com", twitter: "@testUser1", password: "testtest1", is_admin: false)
+    User.create!(name: "testUser2", email: "testUser2@whatever.com", twitter: "@testUser2", password: "testtest2", is_admin: false)
 
     25.times do # Seed blogs
       title = Faker::Lorem.word
