@@ -32,7 +32,7 @@ helpers do
 		end
 	end
 
-	# def password_matcher
-	# 	params[:newPassword] == params[:confirmPassword]
-	# end
+	def password_matcher
+		params[:newPassword] == params[:confirmPassword]
+	end
 end
