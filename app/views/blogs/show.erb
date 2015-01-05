@@ -81,27 +81,28 @@
   <% end %>
   <!-- END skeleton comment for ajax spoof -->
   <!-- BEGIN actual comments -->
-  <% if no_comments %>
-	  <div id="noComments">No comments</div>
-  <% end %>
-  <% @comments.each do |comment| %>
-  	<a id="comment_<%= comment.id %>"></a>
-	  <div class="content">
-		  <h3><%= comment.title %></h3>
-		  <%= markdown(comment.content) %>
-		  <h5>
-		  	Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
-			  <% if privilaged(comment) %>
-			  	<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>/edit' method='GET'>
-						<input class="buttonExtraSmall" type="submit" value="Edit">
-					</form> 
-					<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>' method='POST'>
-			  		<input type="hidden" name="_method" value="DELETE" />
-			  		<input class="buttonExtraSmall" type="submit" value="Delete">
-					</form>
-			  <% end %>
-		  </h5>
-	  </div>
+  <% if comments_exist %>
+	  <% @comments.each do |comment| %>
+	  	<a id="comment_<%= comment.id %>"></a>
+		  <div class="content">
+			  <h3><%= comment.title %></h3>
+			  <%= markdown(comment.content) %>
+			  <h5>
+			  	Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
+				  <% if privilaged(comment) %>
+				  	<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>/edit' method='GET'>
+							<input class="buttonExtraSmall" type="submit" value="Edit">
+						</form> 
+						<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>' method='POST'>
+				  		<input type="hidden" name="_method" value="DELETE" />
+				  		<input class="buttonExtraSmall" type="submit" value="Delete">
+						</form>
+				  <% end %>
+			  </h5>
+		  </div>
+	  <% end %>
+  <% else %>
+	  <div id="noComments">There are no comments</div>
   <% end %>
   <!-- END actual comments -->
 </div>

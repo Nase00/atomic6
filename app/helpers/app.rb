@@ -24,12 +24,12 @@ helpers do
 		Comment.find(params[:comment_id])
 	end
 
-  def latest_blogs # Queries latest 5 blog entries by admin
+  def latest_blogs # latest 5 blog entries by site owner
     Blog.where(author_id: 1).last(5).reverse
   end
 
-  def no_comments
-  	current_blog.comments.length == 0
+  def comments_exist
+  	current_blog.comments.length != 0
   end
 
 	def markdown(content)
