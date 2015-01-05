@@ -15,4 +15,8 @@ class Blog < ActiveRecord::Base
 	  	self.content
 	  end
   end
+
+  def comments
+  	super.reverse
+  end
 end
