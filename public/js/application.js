@@ -7,7 +7,7 @@ $(document).ready(function() {
     })
   }
 
-  var CommentToggleBar = function(toggle) {
+  var commentToggleBar = function(toggle) {
     if (toggle.val().match(/Display Comments: \d*/)) {
       var value = toggle.val()
       value = value.replace("Display Comments:", "Hide Comments:")
@@ -30,16 +30,26 @@ $(document).ready(function() {
      return(false);
   }
 
+  //new
+  _.templateSettings = {
+    interpolate : /\{\{=(.+?)\}\}/g,
+    escape : /\{\{-(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g,
+  };
+  _.templateSettings.variable = "newComment";
+
   Toggle($('#deleteBlogs'), $('.toggle'))
   Toggle($('#makeComment'), $('.toggleMakeComment'))
 
   if (query_string('display_comments')) {
-    CommentToggleBar($('.commentsToggle'))
+    commentToggleBar($('.commentsToggle'))
   }
   $('.commentsToggle').click(function(e) {
     e.preventDefault()
-    CommentToggleBar($('.commentsToggle'))
+    commentToggleBar($('.commentsToggle'))
   })
+
+  var newComment = _.template("hello: <%= title %>");
 
   $('#submitComment').click(function(e) {
     e.preventDefault()
@@ -55,20 +65,18 @@ $(document).ready(function() {
 
     $('.toggleMakeComment').slideToggle(50)
     $('#noComments').fadeToggle(50)
-    $('#makeComment').val("Refresh")
-    $('#makeComment').unbind()
+    // $('#makeComment').val("Refresh")
+    // $('#makeComment').unbind()
 
     request.done(function(response){
       var commentRoute = "/blogs/" + blogId + "/comments/" + response.id
-
+      constructComment(response.title, response.content)
       if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
-        CommentToggleBar($('.commentsToggle'))
+        commentToggleBar($('.commentsToggle'))
       }
-      $('#newContent').show()
-      $('#newCommentTitle').append(response.title)
-      $('#newCommentContent').append(response.content)
-      $("#editForm").attr("action", commentRoute + "/edit")
-      $("#deleteForm").attr("action", commentRoute);
+
+      newComment({title: 'Sean'});
     });
   })
 });
+

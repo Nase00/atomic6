@@ -27,7 +27,7 @@
 	  <% if privilaged(current_blog) %>
 			<form action='/blogs/<%= current_blog.id %>/edit' method='GET'>
 				<input class="buttonSmall" type="submit" value="Edit">
-			</form> 
+			</form>
 			<form action='/blogs/<%= current_blog.id %>' method='POST'>
 	  		<input type="hidden" name="_method" value="DELETE" />
 	  		<input class="buttonSmall" type="submit" value="Delete">
@@ -64,21 +64,25 @@
 	<!-- BEGIN skeleton comment for ajax spoof -->
 	<!-- Better practice would probably be to use JS to insert all of this instead of just filling in a single skeleton -->
 	<% if logged_in? %>
-		<div id="newContent">
+<!-- 		<div id="newContent">
 		  <h3 id="newCommentTitle"></h3>
 		  <div id="newCommentContent"></div>
 		  <h5>
 			  Posted by <a href='/users/<%= logged_in_user.id %>'><%= logged_in_user.name %></a> <i>just now</i>
 		  	<form id="editForm" action='' method='GET'>
 					<input class="buttonExtraSmall" type="submit" value="Edit">
-				</form> 
+				</form>
 				<form id="deleteForm" action='' method='POST'>
 		  		<input type="hidden" name="_method" value="DELETE" />
 		  		<input class="buttonExtraSmall" type="submit" value="Delete">
 				</form>
 			</h5>
-	  </div>
+	  </div> -->
   <% end %>
+
+  <script type="text/template" id="comment-templte">
+  	<h1>{{= newComment.title }}</h1>
+  </script>
   <!-- END skeleton comment for ajax spoof -->
   <!-- BEGIN actual comments -->
   <% if comments_exist %>
@@ -92,7 +96,7 @@
 				  <% if privilaged(comment) %>
 				  	<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>/edit' method='GET'>
 							<input class="buttonExtraSmall" type="submit" value="Edit">
-						</form> 
+						</form>
 						<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>' method='POST'>
 				  		<input type="hidden" name="_method" value="DELETE" />
 				  		<input class="buttonExtraSmall" type="submit" value="Delete">
