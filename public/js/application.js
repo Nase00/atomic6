@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+  _.templateSettings = {
+    interpolate : /\{\{=(.+?)\}\}/g,
+    escape : /\{\{-(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g,
+  };
+
   var Toggle = function(clickSelector, toggleSelector) {
     clickSelector.click(function(e){
       e.preventDefault()
@@ -29,14 +35,6 @@ $(document).ready(function() {
      }
      return(false);
   }
-
-  //new
-  _.templateSettings = {
-    interpolate : /\{\{=(.+?)\}\}/g,
-    escape : /\{\{-(.+?)\}\}/g,
-    evaluate: /\{\{(.+?)\}\}/g,
-  };
-  _.templateSettings.variable = "newComment";
 
   Toggle($('#deleteBlogs'), $('.toggle'))
   Toggle($('#makeComment'), $('.toggleMakeComment'))
@@ -68,14 +66,22 @@ $(document).ready(function() {
     // $('#makeComment').val("Refresh")
     // $('#makeComment').unbind()
 
+    var items = [
+      {name:"Alexander", interests:"creating large empires"},
+      {name:"Edward", interests:"ha.ckers.org <\nBGSOUND SRC=\"javascript:alert('XSS');\">"},
+      {name:"..."},
+      {name:"Yolando", interests:"working out"},
+      {name:"Zachary", interests:"picking flowers for Angela"}
+    ];
+    var template = $("#usageList").html();
+    $("#target").html(_.template(template,{items:items}));
+
     request.done(function(response){
       var commentRoute = "/blogs/" + blogId + "/comments/" + response.id
-      constructComment(response.title, response.content)
+
       if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
         commentToggleBar($('.commentsToggle'))
       }
-
-      newComment({title: 'Sean'});
     });
   })
 });
