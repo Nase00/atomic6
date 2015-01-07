@@ -13,6 +13,8 @@ require 'pathname'
 
 require 'pg'
 require 'active_record'
+require 'active_support'
+
 require 'logger'
 
 require 'sinatra'
@@ -51,3 +53,6 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 require APP_ROOT.join('config', 'database')
 
 # ActiveRecord::Base.default_timezone = :utc
+
+# we're going to render html snippets into json, so don't escape them.
+ActiveSupport.escape_html_entities_in_json = false

@@ -47,7 +47,9 @@ $(document).ready(function() {
     commentToggleBar($('.commentsToggle'))
   })
 
-  var newComment = _.template("hello: <%= title %>");
+  var commentTemplate = _.template(
+    $('#commentTemplate').html()
+  );
 
   $('#submitComment').click(function(e) {
     e.preventDefault()
@@ -63,18 +65,6 @@ $(document).ready(function() {
 
     $('.toggleMakeComment').slideToggle(50)
     $('#noComments').fadeToggle(50)
-    // $('#makeComment').val("Refresh")
-    // $('#makeComment').unbind()
-
-    var items = [
-      {name:"Alexander", interests:"creating large empires"},
-      {name:"Edward", interests:"ha.ckers.org <\nBGSOUND SRC=\"javascript:alert('XSS');\">"},
-      {name:"..."},
-      {name:"Yolando", interests:"working out"},
-      {name:"Zachary", interests:"picking flowers for Angela"}
-    ];
-    var template = $("#usageList").html();
-    $("#target").html(_.template(template,{items:items}));
 
     request.done(function(response){
       var commentRoute = "/blogs/" + blogId + "/comments/" + response.id
@@ -82,6 +72,15 @@ $(document).ready(function() {
       if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
         commentToggleBar($('.commentsToggle'))
       }
+
+      var commentData = {
+        newCommentId: response.id,
+        newCommentTitle: response.title,
+        newCommentContent: response.html_content,
+        newCommentCommenterId: response.commenter_id
+      }
+
+      $('#commentTemplate').after(commentTemplate( commentData ));
     });
   })
 });
