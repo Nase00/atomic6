@@ -19,4 +19,9 @@ class Blog < ActiveRecord::Base
   def comments
   	super.reverse
   end
+
+  def html_content
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    markdown.render(content)
+  end
 end

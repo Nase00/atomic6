@@ -12,7 +12,7 @@
 <div id="wrapper">
 	<h1><%= current_blog.title %></h1>
 	<h3><%= current_blog.description %></h3>
-  <p><%= markdown(current_blog.content) %></p>
+  <p><%= current_blog.html_content %></p>
 	<h5>
 		Authored by <a href="/users/<%= current_blog.author.id %>"><%= current_blog.author.name %></a> <%= time(current_blog) %>
 	</h5>
@@ -61,13 +61,13 @@
 
 <div id="wrapper" class="toggle">
 	<h1>Comments</h1>
-  <script type="foo/bar" id='commentTemplate'>
+  <script type="template" id='commentTemplate'>
 		<a id="comment_{{= newCommentId }}"></a>
 	  <div class="content">
 		  <h3>{{= newCommentTitle }}</h3>
 		  {{= newCommentContent }}
 		  <h5>
-		  	Posted by <a href="/users/{{= newCommentCommenterId }}"><%= logged_in_user.name %></a> <i>just now</i>
+		  	Posted by <a href="/users/{{= newCommentCommenterId }}"><%= logged_in_user.name %></a> {{= newCommentTime }}
 		  	<form id="editForm" action='/blogs/<%= current_blog.id %>/comments/{{= newCommentId }}/edit' method='GET'>
 					<input class="buttonExtraSmall" type="submit" value="Edit">
 				</form>
@@ -85,7 +85,7 @@
 	  	<a id="comment_<%= comment.id %>"></a>
 		  <div class="content">
 			  <h3><%= comment.title %></h3>
-			  <%= markdown(comment.content) %>
+			  <%= comment.html_content %>
 			  <h5>
 			  	Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
 				  <% if privilaged(comment) %>

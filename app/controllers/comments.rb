@@ -14,7 +14,7 @@ post '/blogs/:blog_id/comments' do
 	comment = Comment.new(title: params[:title], content: params[:content], blog_id: current_blog.id, commenter_id: logged_in_user.id)
 	content_type :json
 	comment.save
-	comment.to_json(methods: [:html_content])
+	comment.to_json(methods: [:html_content, :time], except: [:blog_id, :content] )
 end
 
 delete '/blogs/:blog_id/comments/:comment_id' do

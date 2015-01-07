@@ -73,11 +73,14 @@ $(document).ready(function() {
         commentToggleBar($('.commentsToggle'))
       }
 
+      var response_time = new Date(response.created_at).strftime("on %m/%d/%Y at %I:%M%p")
+
       var commentData = {
         newCommentId: response.id,
         newCommentTitle: response.title,
         newCommentContent: response.html_content,
-        newCommentCommenterId: response.commenter_id
+        newCommentCommenterId: response.commenter_id,
+        newCommentTime: response_time
       }
 
       $('#commentTemplate').after(commentTemplate( commentData ));
