@@ -1,6 +1,6 @@
 header {
   margin: 0 auto auto;
-  height: 80px;
+  height: 74px;
   background: #7f7f7f;
   border-radius: 10px;
   border: 2px solid #728c99;
@@ -29,10 +29,7 @@ header > nav > a {
   padding: 0 10px 0 6px;
   font: italic normal normal 22px 'Yanone Kaffeesatz', Impact;
   text-shadow: 0 0 4px #b2b2b2, 0 0 4px #b2b2b2, 0 0 4px #b2b2b2, 0 0 4px #b2b2b2, 0 0 4px #7f7f7f;
-/*  border: 1px solid #000000;*/
   border-color: #bfbfbf;
-/*  border-radius: 5px;*/
-/*  background: linear-gradient(0deg, #c8c8c8, #f2f2f2);*/
 }
 
 header > nav > a:hover {
@@ -54,6 +51,10 @@ nav {
   margin: 0 auto auto;
   padding: 22px;
   text-align: right;
+  background-image: url('/images/background.png');
+  background-repeat: no-repeat;
+  background-position: 165px -40px;
+  background-size: 20%;
 }
 
 #headerWrapper {
@@ -78,6 +79,7 @@ nav {
 #logo {
   float: left;
   padding: 0 0 0 10px;
+  height: 100%;
   border: 0;
   opacity: 1;
   transition: opacity .25s ease-in-out;
@@ -85,3 +87,4 @@ nav {
 #logo:hover {
   opacity: 0.8;
 }
+

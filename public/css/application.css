@@ -2,10 +2,14 @@
   box-sizing: border-box;
 }
 html {
-  background-color: #404040;
-  background-image: url('/images/background.png');
-  background-position: -130px -100px;
+  background: #3f3f3f;
+  background-image:
+     -webkit-radial-gradient(20% top, rgb(80, 80, 80) 0%, rgb(30,30,30) 75%),
+     -webkit-radial-gradient(right top, rgb(190, 190, 190) 100%, rgba(100, 100, 100,0) 57%);
+/*  background-image: url('/images/background.png');
+  background-position: -130px -100px;*/
   background-repeat: no-repeat;
+  background-size: 150%;
   color: #262626;
   overflow-y: scroll;
 }
