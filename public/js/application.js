@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+  _.templateSettings = {
+    interpolate : /\{\{=(.+?)\}\}/g,
+    escape : /\{\{-(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g,
+  };
+
   var Toggle = function(clickSelector, toggleSelector) {
     clickSelector.click(function(e){
       e.preventDefault()
@@ -7,7 +13,7 @@ $(document).ready(function() {
     })
   }
 
-  var CommentToggleBar = function(toggle) {
+  var commentToggleBar = function(toggle) {
     if (toggle.val().match(/Display Comments: \d*/)) {
       var value = toggle.val()
       value = value.replace("Display Comments:", "Hide Comments:")
@@ -34,12 +40,16 @@ $(document).ready(function() {
   Toggle($('#makeComment'), $('.toggleMakeComment'))
 
   if (query_string('display_comments')) {
-    CommentToggleBar($('.commentsToggle'))
+    commentToggleBar($('.commentsToggle'))
   }
   $('.commentsToggle').click(function(e) {
     e.preventDefault()
-    CommentToggleBar($('.commentsToggle'))
+    commentToggleBar($('.commentsToggle'))
   })
+
+  var commentTemplate = _.template(
+    $('#commentTemplate').html()
+  );
 
   $('#submitComment').click(function(e) {
     e.preventDefault()
@@ -55,20 +65,23 @@ $(document).ready(function() {
 
     $('.toggleMakeComment').slideToggle(50)
     $('#noComments').fadeToggle(50)
-    $('#makeComment').val("Refresh")
-    $('#makeComment').unbind()
 
     request.done(function(response){
       var commentRoute = "/blogs/" + blogId + "/comments/" + response.id
 
       if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
-        CommentToggleBar($('.commentsToggle'))
+        commentToggleBar($('.commentsToggle'))
       }
-      $('#newContent').show()
-      $('#newCommentTitle').append(response.title)
-      $('#newCommentContent').append(response.content)
-      $("#editForm").attr("action", commentRoute + "/edit")
-      $("#deleteForm").attr("action", commentRoute);
+
+      var commentData = {
+        newCommentId: response.id,
+        newCommentTitle: response.title,
+        newCommentContent: response.html_content,
+        newCommentCommenterId: response.commenter_id
+      }
+
+      $('#commentTemplate').after(commentTemplate( commentData ));
     });
   })
 });
+

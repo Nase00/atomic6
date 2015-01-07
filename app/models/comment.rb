@@ -5,4 +5,9 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commenter, class_name: "User"
   belongs_to :blog, foreign_key: "blog_id"
+
+  def html_content
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    markdown.render(content)
+  end
 end

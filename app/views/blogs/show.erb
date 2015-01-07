@@ -27,7 +27,7 @@
 	  <% if privilaged(current_blog) %>
 			<form action='/blogs/<%= current_blog.id %>/edit' method='GET'>
 				<input class="buttonSmall" type="submit" value="Edit">
-			</form> 
+			</form>
 			<form action='/blogs/<%= current_blog.id %>' method='POST'>
 	  		<input type="hidden" name="_method" value="DELETE" />
 	  		<input class="buttonSmall" type="submit" value="Delete">
@@ -61,26 +61,25 @@
 
 <div id="wrapper" class="toggle">
 	<h1>Comments</h1>
-	<!-- BEGIN skeleton comment for ajax spoof -->
-	<!-- Better practice would probably be to use JS to insert all of this instead of just filling in a single skeleton -->
-	<% if logged_in? %>
-		<div id="newContent">
-		  <h3 id="newCommentTitle"></h3>
-		  <div id="newCommentContent"></div>
+  <script type="foo/bar" id='commentTemplate'>
+		<a id="comment_{{= newCommentId }}"></a>
+	  <div class="content">
+		  <h3>{{= newCommentTitle }}</h3>
+		  {{= newCommentContent }}
 		  <h5>
-			  Posted by <a href='/users/<%= logged_in_user.id %>'><%= logged_in_user.name %></a> <i>just now</i>
-		  	<form id="editForm" action='' method='GET'>
+		  	Posted by <a href="/users/{{= newCommentCommenterId }}"><%= logged_in_user.name %></a> <i>just now</i>
+		  	<form id="editForm" action='/blogs/<%= current_blog.id %>/comments/{{= newCommentId }}/edit' method='GET'>
 					<input class="buttonExtraSmall" type="submit" value="Edit">
-				</form> 
-				<form id="deleteForm" action='' method='POST'>
+				</form>
+				<form id="deleteForm" action='/blogs/<%= current_blog.id %>/comments/{{= newCommentId }}' method='POST'>
 		  		<input type="hidden" name="_method" value="DELETE" />
 		  		<input class="buttonExtraSmall" type="submit" value="Delete">
 				</form>
 			</h5>
 	  </div>
-  <% end %>
-  <!-- END skeleton comment for ajax spoof -->
-  <!-- BEGIN actual comments -->
+	</script>
+  <div id="target"></div>
+
   <% if comments_exist %>
 	  <% @comments.each do |comment| %>
 	  	<a id="comment_<%= comment.id %>"></a>
@@ -92,7 +91,7 @@
 				  <% if privilaged(comment) %>
 				  	<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>/edit' method='GET'>
 							<input class="buttonExtraSmall" type="submit" value="Edit">
-						</form> 
+						</form>
 						<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>' method='POST'>
 				  		<input type="hidden" name="_method" value="DELETE" />
 				  		<input class="buttonExtraSmall" type="submit" value="Delete">
@@ -104,5 +103,4 @@
   <% else %>
 	  <div id="noComments">There are no comments</div>
   <% end %>
-  <!-- END actual comments -->
 </div>
