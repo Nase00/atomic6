@@ -78,8 +78,9 @@ nav {
 
 #logo {
   float: left;
-  padding: 0 0 0 10px;
-  height: 100%;
+  position: absolute;
+  top: 30px;
+  bottom: 10px;
   border: 0;
   opacity: 1;
   transition: opacity .25s ease-in-out;
