@@ -1,20 +1,20 @@
 <div id="wrapper">
 	<section>
-		<% if owner_of?(@comment) %>
+		<% if owner_of?(current_comment) %>
 		  <h3>Edit your comment</h3>
 	  <% else %>
-	  	<h3>Edit <%= @comment.commenter.name %>'s comment</h3>
+	  	<h3>Edit <%= current_comment.commenter.name %>'s comment</h3>
   	<% end %>
-		<form action='/blogs/<%= current_blog.id %>/comments/<%= @comment.id %>' method='POST'>
+		<form action='/blogs/<%= current_blog.id %>/comments/<%= current_comment.id %>' method='POST'>
 			<table id="blogEdit">
 				<tr>
 					<th>Title</th>
-					<td id="form"><input id='blogTitle' name='editComment[title]' type='text' value='<%= @comment[:title] || @comment.title %>'></td>
+					<td id="form"><input id='blogTitle' name='editComment[title]' type='text' value='<%= @comment[:title] || current_comment.title %>'></td>
 				</tr>
 				<tr>
 					<th>Content</th>
 					<td id="form">
-						<textarea name='editComment[content]' rows="10" cols="30" id='blogContent' type='text' value='@comment.content'><%= @comment[:content] || @comment.content %></textarea>
+						<textarea name='editComment[content]' rows="10" cols="30" id='blogContent' type='text' value='current_comment.content'><%= @comment[:content] || current_comment.content %></textarea>
 						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
 					</td>
 				</tr>

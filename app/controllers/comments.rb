@@ -23,12 +23,12 @@ delete '/blogs/:blog_id/comments/:comment_id' do
 end
 
 get '/blogs/:blog_id/comments/:comment_id/edit' do
-	@comment = Hash.new # Prevents ugly nil error
+	@comment = Comment.new # Prevents ugly nil error
 	erb :'/blogs/comments/edit'
 end
 
 put '/blogs/:blog_id/comments/:comment_id' do
-	@comment = Comment.find(params[:comment_id])
+	@comment = current_comment
 	if @comment.update(params[:editComment])
 		redirect :"/blogs/#{current_blog.id}/comments"
 	else

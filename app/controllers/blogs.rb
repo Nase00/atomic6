@@ -5,7 +5,7 @@ get '/blogs' do
 end
 
 get '/blogs/new' do
-	@blog = Hash.new # Prevents ugly nil error
+	@blog = Blog.new # Prevents ugly nil error
 	erb :'blogs/new'
 end
 
@@ -37,16 +37,15 @@ get '/blogs/:blog_id' do
 end
 
 get '/blogs/:blog_id/edit' do
-	@blog = Hash.new
+	@blog = Blog.new
 	erb :'blogs/edit'
 end
 
 put '/blogs/:blog_id' do
-  if catch_errors(current_blog, params[:editBlog], "update") === true
+	@blog = current_blog
+  if @blog.update(params[:editBlog])
 	  redirect :"/blogs/#{current_blog.id}"
 	else
-		@blog = params[:editBlog]
-		@error_message = catch_errors(current_blog, params[:editBlog], "update")
 		erb :"/blogs/edit"
 	end
 end

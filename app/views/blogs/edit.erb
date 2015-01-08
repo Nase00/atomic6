@@ -29,7 +29,7 @@
 		    <form action='/blogs/<%= current_blog.id %>' method='GET'>
 			    <input class="button1" type="submit" value="CANCEL">
 		    </form>
-		    <p id="error"><%= @error_messages %></p>
+		    <p id="error"><%= @blog.validation_errors %></p>
 		</form>
 	</section>
 </div>

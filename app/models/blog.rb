@@ -24,4 +24,8 @@ class Blog < ActiveRecord::Base
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
     markdown.render(content)
   end
+
+  def validation_errors
+    self.errors.full_messages.join(', ')
+  end
 end
