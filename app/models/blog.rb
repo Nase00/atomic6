@@ -17,7 +17,7 @@ class Blog < ActiveRecord::Base
   end
 
   def comments
-  	super.reverse
+  	super.order(created_at: :desc)
   end
 
   def html_content

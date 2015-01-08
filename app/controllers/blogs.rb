@@ -1,6 +1,6 @@
 get '/blogs' do
 	@page_title = "All blogs"
-  @blogs = Blog.all.reverse
+  @blogs = Blog.all.order(created_at: :desc)
   erb :'blogs/index'
 end
 
