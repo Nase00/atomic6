@@ -28,11 +28,10 @@ get '/blogs/:blog_id/comments/:comment_id/edit' do
 end
 
 put '/blogs/:blog_id/comments/:comment_id' do
-	if catch_errors(current_comment, params[:editComment], "update") === true
-	  redirect :"/blogs/#{current_blog.id}/comments"
+	@comment = Comment.find(params[:comment_id])
+	if @comment.update(params[:editComment])
+		redirect :"/blogs/#{current_blog.id}/comments"
 	else
-		@comment = params[:editComment]
-		@error_message = catch_errors(current_blog, params[:editComment], "update")
 		erb :"/blogs/comments/edit"
 	end
 end

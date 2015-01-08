@@ -11,10 +11,10 @@ end
 
 post '/blogs' do
 	@blog = Blog.new(params[:newBlog])
-	if catch_errors(@blog) == true
-		redirect :"/blogs/#{@blog.id}"
+	if @blog.save
+		redirect :"/blogs/#{blog.id}"
 	else
-		@error_message = catch_errors(@blog)
+		@error_message = @blog.errors.full_messages.join(', ')
 		erb :"/blogs/new"
 	end
 end
