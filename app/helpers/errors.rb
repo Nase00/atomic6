@@ -21,20 +21,4 @@ helpers do
 			false
 		end
 	end
-
-	# def catch_update_errors(model)
-  #  	model.update!()
-	# rescue ActiveRecord::RecordInvalid => error
-	# 	if error.message
-	# 		error.message
-	# 	else
-	# 		false
-	# 	end
-	# end
-
-	# def error_message
-	# 	if params.keys.first
-	# 		params.keys.first.sub(/Validation failed: /, '')
-	# 	end
-	# end
 end
