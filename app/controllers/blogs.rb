@@ -9,10 +9,14 @@ get '/blogs/new' do
 	erb :'blogs/new'
 end
 
+get '/blogs/search' do
+	erb :'blogs/search'
+end
+
 post '/blogs' do
 	@blog = Blog.new(params[:newBlog])
 	if @blog.save
-		redirect :"/blogs/#{blog.id}"
+		redirect :"/blogs/#{@blog.id}"
 	else
 		erb :"/blogs/new"
 	end
@@ -28,10 +32,6 @@ delete '/blogs/:blog_id' do
 	Blog.destroy(params[:blog_id])
 	Comment.destroy_all(blog_id: params[:blog_id])
 	redirect :'/blogs'
-end
-
-get '/blogs/search' do
-	erb :'blogs/search'
 end
 
 get '/blogs/:blog_id' do
