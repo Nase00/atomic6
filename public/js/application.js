@@ -1,6 +1,6 @@
 // function($) {
 // Hmm, I want these to be global functions
-// but they currently polluting the global namespace :(
+// but are they currently polluting the global namespace?
 
 function queryString(variable) {
   var query = window.location.search.substring(1);
