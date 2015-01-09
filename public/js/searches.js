@@ -1,9 +1,6 @@
 $(document).ready(function() {
   var origin = '/blogs/search'
   function clearInput() { $('#input').val(''); }
-  var searchQuery = function(state) {
-    window.history.replaceState('searchResults', 'Search', state);
-  }
 
   function fillResults(response) {
     var resultsData = {
@@ -16,9 +13,9 @@ $(document).ready(function() {
     var resultsTemplate = _.template(
       $('#resultsTemplate').html()
     );
-    console.log(response.title)
+
     $('#resultsAnchor').html(resultsTemplate( resultsData ));
-    searchQuery(route)
+    pushQuery(route)
   }
 
   function noInput(input) {
@@ -46,7 +43,7 @@ $(document).ready(function() {
       if (response !== input) {
         fillResults(response)
       } else {
-        $('#resultsAnchor').html("No results found for " + "\"input\"")
+        $('#resultsAnchor').html("No results found for " + "\"" + input + "\"")
       }
     })
   }
@@ -62,9 +59,9 @@ $(document).ready(function() {
     clearInput();
   })
 
-  $('#clearSearch').click(function (e) {
+  $('#cancelSearch').click(function (e) {
     e.preventDefault();
-    searchQuery(origin)
+    // pushQuery('')
     $('#resultsAnchor').empty()
     clearInput();
   })

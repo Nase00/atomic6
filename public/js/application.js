@@ -1,7 +1,8 @@
 // function($) {
 // Hmm, I want these to be global functions
 // but they currently polluting the global namespace :(
-var queryString = function (variable) {
+
+function queryString(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");
   for (var i=0;i<vars.length;i++) {
@@ -11,7 +12,11 @@ var queryString = function (variable) {
   return pair;
 }
 
-var toggle = function(clickSelector, toggleSelector) {
+function pushQuery(route) {
+  window.history.pushState('pushedQuery', 'pushedQuery', route)
+}
+
+function toggle(clickSelector, toggleSelector) {
   clickSelector.click(function(e){
     e.preventDefault()
     toggleSelector.slideToggle(50)

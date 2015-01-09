@@ -37,6 +37,7 @@ $(document).ready(function() {
       data: $("#commentForm").serialize()
     })
 
+    pushQuery(url)
     $('.toggleMakeComment').slideToggle(50)
     $('#noComments').fadeToggle(50)
 
