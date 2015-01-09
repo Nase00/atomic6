@@ -2,14 +2,21 @@
 <div id='wrapper'>
   <section id='searchForm'>
     <h1>Search</h1>
-    <p>Search for blogs that contain the word<p>
+    <p>Search for blogs by title<p>
     <form action='/blogs/search' method='GET'>
-        <input id='input' type='text' name='keyword' placeholder='keyword' />
-        <input id='searchButton' class='button1' type='submit' placeholder='Search' />
+        <input id='input' type='text' name='keyword' placeholder='Keyword' />
+        <input id='searchButton' class='button1' type='submit' value='Search' />
+        <input id='clearSearch' class='button1' type='submit' value='Cancel' />
     </form>
   </section>
-  <a id='resultsAnchor'></a>
+  <div id='resultsAnchor'></div>
   <script type='template' id='resultsTemplate'>
-    <h1>Results for {{= inputKeyword }}</h1>
+    <h1>Results for "{{= searchedKeyword }}"</h1>
+    <ul>
+      <li>
+        {{= resultTitle }}
+        {{= resultContent }}
+      </li>
+    </ul>
   </script>
 </div>

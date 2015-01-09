@@ -1,21 +1,71 @@
 $(document).ready(function() {
-  var keyword = query_string(keyword);
+  var origin = '/blogs/search'
+  function clearInput() { $('#input').val(''); }
+  var searchQuery = function(state) {
+    window.history.replaceState('searchResults', 'Search', state);
+  }
 
-  $('#searchButton').click(function (e) {
-    e.preventDefault();
+  function fillResults(response) {
+    var resultsData = {
+      searchedKeyword: response.title,
+      resultTitle: response.title,
+      resultContent: response.content
+    };
 
-    var input = $('#input').val();
+    var route = origin +'?keyword#' + input;
     var resultsTemplate = _.template(
       $('#resultsTemplate').html()
     );
-
-    var route = '/blogs/search?keyword=' + $('input').val();
-    window.history.pushState('searchResults', 'Search Results', route);
-
-    var resultsData = {
-      inputKeyword: input
-    };
-
+    console.log(response.title)
     $('#resultsAnchor').html(resultsTemplate( resultsData ));
+    searchQuery(route)
+  }
+
+  function noInput(input) {
+    var resultsData = { inputKeyword: input };
+    var resultsTemplate = _.template(input);
+    $('#resultsAnchor').empty()
+    $('#resultsAnchor').html(resultsTemplate( resultsData ));
+  }
+
+  var keyword = window.location.hash.replace("#","")
+  if (keyword) {
+    fillResults(keyword)
+  };
+
+  function ajaxGetResults(input) {
+    var request = $.ajax({
+      url: "/blogs/search/" + input,
+      method: "get",
+      dataType: "json",
+      data: 'test'
+    })
+
+    request.done(function(response){
+      console.log(response)
+      if (response !== input) {
+        fillResults(response)
+      } else {
+        $('#resultsAnchor').html("No results found for " + "\"input\"")
+      }
+    })
+  }
+
+  $('#searchButton').click(function (e) {
+    e.preventDefault();
+    var input = $('#input').val();
+    if (input) {
+      ajaxGetResults(input)
+    } else {
+      noInput("You didn't enter anything!")
+    };
+    clearInput();
+  })
+
+  $('#clearSearch').click(function (e) {
+    e.preventDefault();
+    searchQuery(origin)
+    $('#resultsAnchor').empty()
+    clearInput();
   })
 });

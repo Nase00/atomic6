@@ -1,32 +1,25 @@
 $(document).ready(function() {
-  var commentToggleBar = function(toggle) {
+  var commentToggleBar = (function(toggle) {
     if (toggle.val().match(/Display Comments: \d*/)) {
-      var value = toggle.val()
-      value = value.replace("Display Comments:", "Hide Comments:")
+      var value = toggle.val();
+      value = value.replace("Display Comments:", "Hide Comments:");
     } else {
-      var value = toggle.val()
-      value = value.replace("Hide Comments:", "Display Comments:")
+      var value = toggle.val();
+      value = value.replace("Hide Comments:", "Display Comments:");
     };
-    toggle.val(value)
+    toggle.val(value);
     $('.toggle').slideToggle(50);
-  }
+  })
 
-  var Toggle = function(clickSelector, toggleSelector) {
-    clickSelector.click(function(e){
-      e.preventDefault()
-      toggleSelector.slideToggle(50)
-    })
-  }
+  toggle($('#makeComment'), $('.toggleMakeComment'))
 
-  Toggle($('#deleteBlogs'), $('.toggle'))
-  Toggle($('#makeComment'), $('.toggleMakeComment'))
-
-  if (query_string('display_comments')) {
+  if (queryString('display_comments') === "true") {
     commentToggleBar($('.commentsToggle'))
   }
-  $('.commentsToggle').click(function(e) {
+
+  $('#toggleAllComments').click(function(e) {
     e.preventDefault()
-    commentToggleBar($('.commentsToggle'))
+    commentToggleBar($('#toggleAllComments'))
   })
 
   var commentTemplate = _.template(
@@ -37,7 +30,6 @@ $(document).ready(function() {
     e.preventDefault()
     var blogId = $(e.currentTarget).attr("dir")
     var url = ("/blogs/" + blogId + "/comments");
-    console.log(url);
     var request = $.ajax({
       url: "/blogs/" + blogId + "/comments",
       method: "post",
@@ -49,8 +41,6 @@ $(document).ready(function() {
     $('#noComments').fadeToggle(50)
 
     request.done(function(response){
-      var commentRoute = "/blogs/" + blogId + "/comments/" + response.id
-
       if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
         commentToggleBar($('.commentsToggle'))
       }
