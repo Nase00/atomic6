@@ -2,11 +2,10 @@ $(document).ready(function() {
   var origin = '/blogs/search'
   function clearInput() { $('#input').val(''); }
 
-  function fillResults(response) {
+  function fillResults(input, response) {
     var resultsData = {
-      searchedKeyword: response.title,
-      resultTitle: response.title,
-      resultContent: response.content
+      searchedKeyword: input,
+      resultBlogs: response
     };
 
     var route = origin +'?keyword#' + input;
@@ -27,12 +26,12 @@ $(document).ready(function() {
 
   var keyword = window.location.hash.replace("#","")
   if (keyword) {
-    fillResults(keyword)
+    getReults(keyword)
   };
 
-  function ajaxGetResults(input) {
+  function getReults(input) {
     var request = $.ajax({
-      url: "/blogs/search/" + input,
+      url: origin + "/" + input,
       method: "get",
       dataType: "json",
       data: 'test'
@@ -40,8 +39,8 @@ $(document).ready(function() {
 
     request.done(function(response){
       console.log(response)
-      if (response !== input) {
-        fillResults(response)
+      if (response.length != []) {
+        fillResults(input, response)
       } else {
         $('#resultsAnchor').html("No results found for " + "\"" + input + "\"")
       }
@@ -52,7 +51,7 @@ $(document).ready(function() {
     e.preventDefault();
     var input = $('#input').val();
     if (input) {
-      ajaxGetResults(input)
+      getReults(input)
     } else {
       noInput("You didn't enter anything!")
     };
@@ -61,7 +60,7 @@ $(document).ready(function() {
 
   $('#cancelSearch').click(function (e) {
     e.preventDefault();
-    // pushQuery('')
+    pushQuery(origin)
     $('#resultsAnchor').empty()
     clearInput();
   })

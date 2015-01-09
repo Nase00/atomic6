@@ -13,10 +13,9 @@
   <script type='template' id='resultsTemplate'>
     <h1>Results for "{{= searchedKeyword }}"</h1>
     <ul>
-      <li>
-        {{= resultTitle }}
-        {{= resultContent }}
-      </li>
+       {{ for(var blog in resultBlogs) { }}
+           <li>{{= blog.title }}</li>
+       {{ } }}
     </ul>
   </script>
 </div>
