@@ -15,7 +15,7 @@
     <ol>
       {{ for(var blog in resultBlogs) { }}
         <li>
-          <a href='/blogs/{{= resultBlogs[blog].id }}'>{{= resultBlogs[blog].title }}
+          <a href='/blogs/{{= resultBlogs[blog].id }}'>{{= resultBlogs[blog].title }}</a>
           <p>{{= resultBlogs[blog].content }}</p>
         </li>
       {{ } }}

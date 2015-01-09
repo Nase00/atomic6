@@ -53,9 +53,9 @@ td#form {
   padding: 0 0 10px 0;
 }*/
 
-/*li {
-  list-style-type: none;
-}*/
+li {
+  padding: 0 0 16px;
+}
 
 form {
   display: inline;
