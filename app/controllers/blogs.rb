@@ -14,7 +14,6 @@ post '/blogs' do
 	if @blog.save
 		redirect :"/blogs/#{blog.id}"
 	else
-		@error_message = @blog.errors.full_messages.join(', ')
 		erb :"/blogs/new"
 	end
 end
@@ -29,6 +28,10 @@ delete '/blogs/:blog_id' do
 	Blog.destroy(params[:blog_id])
 	Comment.destroy_all(blog_id: params[:blog_id])
 	redirect :'/blogs'
+end
+
+get '/blogs/search' do
+	erb :'blogs/search'
 end
 
 get '/blogs/:blog_id' do

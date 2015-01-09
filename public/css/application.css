@@ -88,22 +88,9 @@ input, textarea {
   padding: 6px 0 0 0;
 }
 
-.toggle {
-  display: none;
-}
-.toggleMakeComment {
-  display: none;
-}
 .checkbox {
   height: 20px;
   width: 20px;
-}
-#newContent {
-  margin: 0;
-  padding: 4px;
-}
-#newContent {
-  display: none;
 }
 
 .button1, .button2, .buttonSmall, .buttonExtraSmall, .buttonWide {

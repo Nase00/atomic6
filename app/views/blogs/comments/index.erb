@@ -10,6 +10,7 @@
       </h3>
       <p><%= markdown(comment.content) %></p>
       <h5>
+        <a href='/blogs/<%= comment.blog_id %>/comments/<%= comment.id %>'>Permalink</a> -
         Posted to <a href="/blogs/<%= comment.blog_id %>/comments"><%= comment.blog.title %></a> by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
       </h5>
     </div>

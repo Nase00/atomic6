@@ -1,22 +1,4 @@
 $(document).ready(function() {
-  var Toggle = function(clickSelector, toggleSelector) {
-    clickSelector.click(function(e){
-      e.preventDefault()
-      toggleSelector.slideToggle(50)
-    })
-  }
-
-  function query_string(variable)
-  {
-     var query = window.location.search.substring(1);
-     var vars = query.split("&");
-     for (var i=0;i<vars.length;i++) {
-             var pair = vars[i].split("=");
-             if(pair[0] == variable){return pair[1];}
-     }
-     return(false);
-  }
-
   var commentToggleBar = function(toggle) {
     if (toggle.val().match(/Display Comments: \d*/)) {
       var value = toggle.val()
@@ -27,6 +9,13 @@ $(document).ready(function() {
     };
     toggle.val(value)
     $('.toggle').slideToggle(50);
+  }
+
+  var Toggle = function(clickSelector, toggleSelector) {
+    clickSelector.click(function(e){
+      e.preventDefault()
+      toggleSelector.slideToggle(50)
+    })
   }
 
   Toggle($('#deleteBlogs'), $('.toggle'))

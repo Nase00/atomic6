@@ -8,6 +8,9 @@
 		<form action='blogs/new' method='GET'>
 			<input type='submit' class='button1' value='New Blog'>
 		</form>
+    <form action='blogs/search' method='GET'>
+      <input type='submit' class='button1' value='Search Blogs'>
+    </form>
 		<% if logged_in_user.is_admin %>
 			<input type='submit' id='deleteBlogs' class='button1' value='Remove Blogs'>
 			<!-- Start delete all form --><form action='/blogs/all' method='POST'>

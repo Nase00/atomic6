@@ -1,0 +1,15 @@
+<script src='/js/searches.js'></script>
+<div id='wrapper'>
+  <section id='searchForm'>
+    <h1>Search</h1>
+    <p>Search for blogs that contain the word<p>
+    <form action='/blogs/search' method='GET'>
+        <input id='input' type='text' name='keyword' placeholder='keyword' />
+        <input id='searchButton' class='button1' type='submit' placeholder='Search' />
+    </form>
+  </section>
+  <a id='resultsAnchor'></a>
+  <script type='template' id='resultsTemplate'>
+    <h1>Results for {{= inputKeyword }}</h1>
+  </script>
+</div>

@@ -8,6 +8,13 @@ var query_string = function (variable) {
   return pair;
 }
 
+var Toggle = function(clickSelector, toggleSelector) {
+  clickSelector.click(function(e){
+    e.preventDefault()
+    toggleSelector.slideToggle(50)
+  })
+}
+
 $(document).ready(function() {
   _.templateSettings = {
     interpolate : /\{\{=(.+?)\}\}/g,

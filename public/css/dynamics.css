@@ -1,0 +1,13 @@
+#newContent {
+  margin: 0;
+  padding: 4px;
+}
+#newContent {
+  display: none;
+}
+.toggle {
+  display: none;
+}
+.toggleMakeComment {
+  display: none;
+}

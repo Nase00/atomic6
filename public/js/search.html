@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://localhost:9393/blogs/search?wtf=bloop -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="http://localhost:9393/css/normalize.css">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="./search_files/css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="http://localhost:9393/css/application.css">
+  <link rel="stylesheet" href="http://localhost:9393/css/header.css">
+  <link rel="stylesheet" href="http://localhost:9393/css/text.css">
+
+  <script src="./search_files/jquery.min.js"></script>
+  <script src="./search_files/application.js"></script>
+  <script src="./search_files/underscore-min.js"></script>
+  <script src="./search_files/strftime.js"></script>
+
+  <title>Atomic6</title>
+</head>
+<body cz-shortcut-listen="true">
+  <div id="headerWrapper">
+  <div id="session">
+    
+      Welcome, <a href="http://localhost:9393/users/1">Sean</a>
+        
+          —You are logged in as an admin
+        
+        — <a href="http://localhost:9393/logout">Logout</a>
+      
+    </div>
+    <header>
+      <a href="http://localhost:9393/"><img id="logo" src="./search_files/logo.png"></a>
+      <nav>
+        <a href="http://localhost:9393/">Home</a> <a href="http://localhost:9393/blogs">Blog</a> <a href="">Portfolio</a> <a href="http://localhost:9393/users">Users</a> <a href="http://localhost:9393/about">About</a>
+      </nav>
+    </header>
+  </div>
+  <script src="./search_files/searches.js"></script>
+<div id="wrapper">
+  <h1>Search</h1>
+  <form id="searchButton" action="http://localhost:9393/blogs/search" method="GET">
+    <p>Search for blogs that contain the word</p><p>
+      <input type="text" name="keyword" placeholder="keyword">
+      <input class="button1" type="submit" placeholder="Search">
+  </p></form>
+</div>
+
+  <footer>
+    <a href="https://github.com/Nase00/atomic6">https://github.com/Nase00/atomic6</a>
+  </footer>
+
+
+</body></html>
