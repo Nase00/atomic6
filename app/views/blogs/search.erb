@@ -12,10 +12,13 @@
   <div id='resultsAnchor'></div>
   <script type='template' id='resultsTemplate'>
     <h1>Results for "{{= searchedKeyword }}"</h1>
-    <ul>
-       {{ for(var blog in resultBlogs) { }}
-           <li>{{= blog.title }}</li>
-       {{ } }}
-    </ul>
+    <ol>
+      {{ for(var blog in resultBlogs) { }}
+        <li>
+          <a href='/blogs/{{= resultBlogs[blog].id }}'>{{= resultBlogs[blog].title }}
+          <p>{{= resultBlogs[blog].content }}</p>
+        </li>
+      {{ } }}
+    <ol>
   </script>
 </div>
