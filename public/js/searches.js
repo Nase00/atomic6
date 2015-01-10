@@ -42,7 +42,7 @@ $(document).ready(function() {
       if (response.length != []) {
         fillResults(input, response)
       } else {
-        $('#resultsAnchor').html("No results found for " + "\"" + input + "\"")
+        $('#resultsAnchor').html("<p id='error'>No results found for " + "\"" + input + "\"</p>")
       }
     })
   }
@@ -53,7 +53,7 @@ $(document).ready(function() {
     if (input) {
       getResults(input)
     } else {
-      noInput("You didn't enter anything!")
+      noInput("<p id='error'>You didn't enter anything!</p>")
     };
     clearInput();
   })
