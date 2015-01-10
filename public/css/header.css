@@ -4,7 +4,6 @@ header {
   background: #7f7f7f;
   border-radius: 10px;
   border: 2px solid #728c99;
-/*  box-shadow: 0 0 0 2px #b2b2b2;*/
   background: linear-gradient(0deg, #c8c8c8, #f2f2f2);
 }
 footer {
@@ -17,7 +16,6 @@ footer {
   background: #7f7f7f;
   border-radius: 10px;
   border: 2px solid #728c99;
-  /*box-shadow: 0 0 0 2px #b2b2b2;*/
   background: linear-gradient(0deg, #d8d8d8, #f2f2f2);
 }
 
@@ -33,16 +31,13 @@ header > nav > a {
 }
 
 header > nav > a:hover {
-  /*background: linear-gradient(0deg, #acd4e5, #f2f2f2);*/
   text-decoration: underline;
 }
 
 header > nav > a:active {
-  /*background: linear-gradient(0deg, #b5d6e2, #f2f2f2);*/
   text-shadow: 0 0 0 #b2b2b2, 0 0 0 #b2b2b2, 0 0 0 #b2b2b2, 0 0 0 #b2b2b2, 0 0 4px #7f7f7f;
 }
 header > nav > a:hover, header > nav > a:active  {
-  /*text-decoration: none;*/
   vertical-align: middle;
   color: #FFFFFF;
 }

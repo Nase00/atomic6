@@ -1,5 +1,5 @@
 # be rake db:drop && be rake db:create && be rake db:migrate && be rake db:seed
-# heroku run db:drop
+
 module Seed
   def self.run
     User.create!(name: "Sean", email: "nase00@gmail.com", twitter: "@NaseZero", password: "test", is_admin: true)

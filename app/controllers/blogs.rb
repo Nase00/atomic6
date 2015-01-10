@@ -22,7 +22,7 @@ post '/blogs' do
 	end
 end
 
-delete '/blogs/all' do # Probably not RESTful, come back to this
+delete '/blogs/all' do
 	Blog.destroy(params[:selected_blog].keys)
 	Comment.destroy_all(blog_id: params[:selected_blog].keys)
 	redirect :'blogs'

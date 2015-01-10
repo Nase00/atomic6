@@ -1,4 +1,3 @@
-# --- LOGIN
 get '/login' do
   @no_user = params["no_user"] == "true"
   @login_error = params["login_error"] == "true"
@@ -18,7 +17,6 @@ post '/login' do
   end
 end
 
-# --- LOGOUT
 get '/logout' do
   session[:logged_in_user_id] = nil
   redirect :'/'
