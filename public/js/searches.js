@@ -5,6 +5,7 @@ $(document).ready(function() {
   function fillResults(input, response) {
     var resultsData = {
       searchedKeyword: input,
+      searchedParam: 'title',
       resultBlogs: response
     };
 

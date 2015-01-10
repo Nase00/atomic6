@@ -18,7 +18,7 @@
   </section>
   <div id='resultsAnchor'></div>
   <script type='template' id='resultsTemplate'>
-    <h1>Results for "{{= searchedKeyword }}"</h1>
+    <h1>Blogs containing "{{= searchedKeyword }}" in the {{= searchedParam }}</h1>
     <ol>
       {{ for(var blog in resultBlogs) { }}
         <li>
