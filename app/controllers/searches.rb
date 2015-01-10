@@ -4,7 +4,7 @@ get '/blogs/search/:search_term' do
   # blogs = Blog.where(title: search_term)
   content_type :json
   if blogs
-    blogs.to_json(methods: [:html_content, :time, :author], except: [:content] )
+    blogs.to_json(methods: [:html_content, :nice_time, :author], except: [:content] )
     # {blogs: blogs, authors: blogs.authors}.to_json
   else
     search_term.to_json

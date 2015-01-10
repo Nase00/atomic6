@@ -15,7 +15,7 @@
 	<h3><%= current_blog.description %></h3>
   <p><%= current_blog.html_content %></p>
 	<h5>
-		Authored by <a href="/users/<%= current_blog.author.id %>"><%= current_blog.author.name %></a> <%= time(current_blog) %>
+		Authored by <a href="/users/<%= current_blog.author.id %>"><%= current_blog.author.name %></a> <%= current_blog.nice_time %>
 	</h5>
   <div id="optionsWrapper">
 	  <% if logged_in? %>
@@ -88,7 +88,7 @@
 			  <h3><%= comment.title %></h3>
 			  <%= comment.html_content %>
 			  <h5>
-			  	Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= time(comment) %>
+			  	Posted by <a href="/users/<%= comment.commenter.id %>"><%= comment.commenter.name %></a> <%= comment.nice_time %>
 				  <% if privilaged(comment) %>
 				  	<form action='/blogs/<%= current_blog.id %>/comments/<%= comment.id %>/edit' method='GET'>
 							<input class="buttonExtraSmall" type="submit" value="Edit">

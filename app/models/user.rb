@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   # has_secure_password
 
+  def nice_time
+    self.created_at.strftime("%m/%d/%Y")
+  end
+
   def password=(password)
     # raise 'Password too short (minimum 6 characters)' if password.length > 6
     self.hashed_password = BCrypt::Password.create(password)

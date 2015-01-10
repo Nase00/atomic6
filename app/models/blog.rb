@@ -12,6 +12,14 @@ class Blog < ActiveRecord::Base
   	super.order(created_at: :desc)
   end
 
+  def nice_time
+    if self.created_at == self.updated_at
+      self.created_at.strftime("on %m/%d/%Y at %I:%M%p")
+    else
+      self.created_at.strftime("on %m/%d/%Y at %I:%M%p") + self.updated_at.strftime(" and edited on %m/%d/%Y at %I:%M%p")
+    end
+  end
+
   def html_content
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
     markdown.render(content)

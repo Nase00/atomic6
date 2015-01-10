@@ -33,7 +33,7 @@
       <h3><%= blog.description %></h3>
       <p><%= blog.first(500) %></p>
       <h5>
-	      Authored by <a href="/users/<%= blog.author.id %>"><%= blog.author.name %></a> <%= time(blog) %>
+	      Authored by <a href="/users/<%= blog.author.id %>"><%= blog.author.name %></a> <%= blog.nice_time %>
       </h5>
     </div>
   <% end %>

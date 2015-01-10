@@ -4,8 +4,8 @@
 	  <div class="content">
 	    <h2 id="blogTitle"><a href='blogs/<%= blog.id %>'><%= blog.title %></a></h2>
 	    <h3 id="blogDesc"><%= blog.description %></h3>
-	    <div id="blogContent"><p><%= markdown(blog.first(500)) %></p></div>
-	    <h5 id="blogAuthor">Authored by <a href="/users/<%= blog.author.id %>"><%= blog.author.name %></a> <%= time(blog) %></h5>
+	    <div id="blogContent"><p><%= blog.first(500) %></p></div>
+	    <h5 id="blogAuthor">Authored by <a href="/users/<%= blog.author.id %>"><%= blog.author.name %></a> <%= blog.nice_time %></h5>
 	  </div>
 	<% end %>
 </div>
