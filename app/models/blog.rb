@@ -8,14 +8,6 @@ class Blog < ActiveRecord::Base
 
   has_many :comments
 
-  def first(number)
-  	if self.content.length > number
-	  	self.content[0..number] + "<a id=\"continueReading\" href='/blogs/#{self.id}'>...continue reading</a>"
-	  else
-	  	self.content
-	  end
-  end
-
   def comments
   	super.order(created_at: :desc)
   end
@@ -23,6 +15,14 @@ class Blog < ActiveRecord::Base
   def html_content
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
     markdown.render(content)
+  end
+
+  def first(number)
+    if self.content.length > number
+      self.html_content[0..number] + "<a id=\"continueReading\" href='/blogs/#{self.id}'>...continue reading</a>"
+    else
+      self.html_content
+    end
   end
 
   def validation_errors

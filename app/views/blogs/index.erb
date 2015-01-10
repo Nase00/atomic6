@@ -31,7 +31,7 @@
       	<a href='/blogs/<%= blog.id %>'><%= blog.title %></a>
       </h2>
       <h3><%= blog.description %></h3>
-      <p><%= markdown(blog.first(500)) %></p>
+      <p><%= blog.first(500) %></p>
       <h5>
 	      Authored by <a href="/users/<%= blog.author.id %>"><%= blog.author.name %></a> <%= time(blog) %>
       </h5>
