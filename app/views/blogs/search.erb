@@ -1,4 +1,16 @@
 <script src='/js/searches.js'></script>
+
+<div id="wrapper">
+  <form action='/blogs' method='GET'>
+    <input type='submit' class='button1' value='Return to Index'>
+  </form>
+  <% if logged_in? %>
+    <form action='../blogs/new' method='GET'>
+      <input type='submit' class='button1' value='New Blog'>
+    </form>
+  <% end %>
+</div>
+
 <div id='wrapper'>
   <h1>Search</h1>
   <section>
