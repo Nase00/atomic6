@@ -23,8 +23,10 @@
       {{ for(var blog in resultBlogs) { }}
         <li>
           <a href='/blogs/{{= resultBlogs[blog].id }}'>{{= resultBlogs[blog].title }}</a>
-          <p>{{= resultBlogs[blog].content }}</p>
-          <p>{{= resultBlogs[blog].author }}</p>
+          <p>{{= resultBlogs[blog].html_content }}</p>
+          <h5>
+            Authored by <a href="/users/{{= resultBlogs[blog].author.id }}">{{= resultBlogs[blog].author.name }}</a>
+          </h5>
         </li>
       {{ } }}
     <ol>

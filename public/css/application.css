@@ -90,6 +90,9 @@ input, textarea {
   height: 20px;
   width: 20px;
 }
+li {
+  padding: 0 0 6px 0;
+}
 
 .button1, .button2, .buttonSmall, .buttonExtraSmall, .buttonWide {
   margin: 4px 0 4px 0;
