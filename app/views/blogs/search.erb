@@ -1,12 +1,19 @@
 <script src='/js/searches.js'></script>
 <div id='wrapper'>
-  <section id='searchForm'>
-    <h1>Search</h1>
-    <p>Search for blogs by:<p>
+  <h1>Search</h1>
+  <section>
     <form action='/blogs/search' method='GET'>
-        <input id='input' type='text' name='keyword' placeholder='Keyword' />
-        <input id='searchButton' class='button1' type='submit' value='Search' />
-        <input id='cancelSearch' class='button1' type='submit' value='Cancel' />
+      <table>
+        <tr>
+          <th>Keyword</th>
+          <td id="form">
+            <input id='input' type='text' name='keyword' placeholder='Type in a keyword' />
+            <h5>Keyword is case sensative</h5>
+          </td>
+        </tr>
+      </table>
+      <input id='searchButton' class='button1' type='submit' value='Search' />
+      <td id="form"><input id='cancelSearch' class='button1' type='submit' value='Clear' />
     </form>
   </section>
   <div id='resultsAnchor'></div>
@@ -17,6 +24,7 @@
         <li>
           <a href='/blogs/{{= resultBlogs[blog].id }}'>{{= resultBlogs[blog].title }}</a>
           <p>{{= resultBlogs[blog].content }}</p>
+          <p>{{= resultBlogs[blog].author }}</p>
         </li>
       {{ } }}
     <ol>

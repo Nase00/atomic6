@@ -3,14 +3,14 @@
 		<h2>New Blog</h2>
 		<form action='/blogs' method='POST'>
 		<input type="hidden" name="newBlog[author_id]" value="<%= logged_in_user.id %>" />
-			<table id="blogEdit">
+			<table>
 				<tr>
 					<th>Title</th>
-					<td id="form"><input id='blogTitle' name='newBlog[title]' type='text' value='<%= @blog[:title] %>' placeholder='title'></td>
+					<td id="form"><input name='newBlog[title]' type='text' value='<%= @blog[:title] %>' placeholder='title'></td>
 				</tr>
 				<tr>
 					<th>Description</th>
-					<td id="form"><input id='blogDesc' name='newBlog[description]' type='text' value='<%= @blog[:description] %>' placeholder='description (optional)'></td>
+					<td id="form"><input name='newBlog[description]' type='text' value='<%= @blog[:description] %>' placeholder='description (optional)'></td>
 				</tr>
 				<tr>
 					<th>Content</th>

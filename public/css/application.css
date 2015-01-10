@@ -45,17 +45,12 @@ tr, th, td {
   text-align: left;
   border-radius: 10px;
 }
+th {
+  padding: 16px 0 0 0;
+}
 td#form {
   width: 100%;
 }
-
-/*p {
-  padding: 0 0 10px 0;
-}*/
-
-/*li {
-  list-style-type: none;
-}*/
 
 form {
   display: inline;
@@ -86,6 +81,9 @@ input, textarea {
   float: right;
   margin: 0;
   padding: 6px 0 0 0;
+}
+#searchForm {
+  width: 400px;
 }
 
 .checkbox {

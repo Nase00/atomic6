@@ -5,6 +5,9 @@
 #newContent {
   display: none;
 }
+#resultsAnchor {
+  padding: 25px 0 0 0;
+}
 .toggle {
   display: none;
 }

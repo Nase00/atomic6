@@ -26,10 +26,10 @@ $(document).ready(function() {
 
   var keyword = window.location.hash.replace("#","")
   if (keyword) {
-    getReults(keyword)
+    getResults(keyword)
   };
 
-  function getReults(input) {
+  function getResults(input) {
     var request = $.ajax({
       url: origin + "/" + input,
       method: "get",
@@ -38,6 +38,7 @@ $(document).ready(function() {
     })
 
     request.done(function(response){
+      console.log(response)
       if (response.length != []) {
         fillResults(input, response)
       } else {
@@ -50,7 +51,7 @@ $(document).ready(function() {
     e.preventDefault();
     var input = $('#input').val();
     if (input) {
-      getReults(input)
+      getResults(input)
     } else {
       noInput("You didn't enter anything!")
     };
