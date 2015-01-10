@@ -38,7 +38,6 @@ $(document).ready(function() {
     })
 
     request.done(function(response){
-      console.log(response)
       if (response.length != []) {
         fillResults(input, response)
       } else {
