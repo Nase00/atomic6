@@ -11,6 +11,11 @@ $(document).ready(function() {
     $('.toggle').slideToggle(50);
   })
 
+  function displayErrors(validation_errors) {
+    $('.toggleMakeComment').slideToggle(50)
+    $('#error').html(validation_errors)
+  };
+
   toggle($('#makeComment'), $('.toggleMakeComment'))
 
   if (queryString('display_comments') === "true") {
@@ -42,21 +47,25 @@ $(document).ready(function() {
     $('#noComments').fadeToggle(50)
 
     request.done(function(response){
-      if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
-        commentToggleBar($('.commentsToggle'))
+      if (response.validation_errors) {
+        displayErrors(response.validation_errors)
+      } else {
+        if ($('.commentsToggle').val().match(/Display Comments: \d*/)) {
+          commentToggleBar($('.commentsToggle'))
+        }
+
+        var response_time = new Date(response.created_at).strftime("on %m/%d/%Y at %I:%M%p")
+
+        var commentData = {
+          newCommentId: response.id,
+          newCommentTitle: response.title,
+          newCommentContent: response.html_content,
+          newCommentCommenterId: response.commenter_id,
+          newCommentTime: response_time
+        }
+
+        $('#commentTemplate').after(commentTemplate( commentData ));
       }
-
-      var response_time = new Date(response.created_at).strftime("on %m/%d/%Y at %I:%M%p")
-
-      var commentData = {
-        newCommentId: response.id,
-        newCommentTitle: response.title,
-        newCommentContent: response.html_content,
-        newCommentCommenterId: response.commenter_id,
-        newCommentTime: response_time
-      }
-
-      $('#commentTemplate').after(commentTemplate( commentData ));
     });
   })
 });
