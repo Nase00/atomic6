@@ -40,7 +40,7 @@ tr, th, td {
   text-align: left;
   border-radius: 10px;
 }
-th {
+th#label {
   padding: 16px 0 0 0;
 }
 td#form {

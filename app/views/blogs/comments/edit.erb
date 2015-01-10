@@ -8,11 +8,11 @@
 		<form action='/blogs/<%= current_blog.id %>/comments/<%= current_comment.id %>' method='POST'>
 			<table id="blogEdit">
 				<tr>
-					<th>Title</th>
+					<th id='label'>Title</th>
 					<td id="form"><input id='blogTitle' name='editComment[title]' type='text' value='<%= @comment[:title] || current_comment.title %>'></td>
 				</tr>
 				<tr>
-					<th>Content</th>
+					<th id='label'>Content</th>
 					<td id="form">
 						<textarea name='editComment[content]' rows="10" cols="30" id='blogContent' type='text' value='current_comment.content'><%= @comment[:content] || current_comment.content %></textarea>
 						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>

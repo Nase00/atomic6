@@ -5,15 +5,15 @@
 		<input type="hidden" name="newBlog[author_id]" value="<%= logged_in_user.id %>" />
 			<table>
 				<tr>
-					<th>Title</th>
+					<th id='label'>Title</th>
 					<td id="form"><input name='newBlog[title]' type='text' value='<%= @blog[:title] %>' placeholder='title'></td>
 				</tr>
 				<tr>
-					<th>Description</th>
+					<th id='label'>Description</th>
 					<td id="form"><input name='newBlog[description]' type='text' value='<%= @blog[:description] %>' placeholder='description (optional)'></td>
 				</tr>
 				<tr>
-					<th>Content</th>
+					<th id='label'>Content</th>
 					<td id="form">
 						<textarea name='newBlog[content]' rows="10" cols="30" id='blogContent' type='text' placeholder='content'><%= @blog[:content] %></textarea>
 						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
@@ -24,7 +24,7 @@
 		    <form action='/blogs' method='GET'>
 			    <input class="button1" type="submit" value="CANCEL">
 		    </form>
-			  <p id="error"><%= @error_message %></p>
+			  <p id="error"><%= @blog.validation_errors %></p>
 		</form>
 	</section>
 </div>

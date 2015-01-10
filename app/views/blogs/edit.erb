@@ -9,15 +9,15 @@
 		<input type="hidden" name="editBlog[author_id]" value="<%= logged_in_user.id %>" />
 			<table id="blogEdit">
 				<tr>
-					<th>Title</th>
+					<th id='label'>Title</th>
 					<td id="form"><input id='blogTitle' name='editBlog[title]' type='text' value='<%= @blog[:title] || current_blog.title %>'></td>
 				</tr>
 				<tr>
-					<th>Description</th>
+					<th id='label'>Description</th>
 					<td id="form"><input id='blogDesc' name='editBlog[description]' type='text' value='<%= @blog[:description] || current_blog.description %>'></td>
 				</tr>
 				<tr>
-					<th>Content</th>
+					<th id='label'>Content</th>
 					<td id="form">
 						<textarea name='editBlog[content]' rows="10" cols="30" id='blogContent' type='text' value='<%= current_blog.content %>'><%= @blog[:content] || current_blog.content %></textarea>
 						<h5><a href="https://help.github.com/articles/markdown-basics/">Markdown guide</a></h5>
